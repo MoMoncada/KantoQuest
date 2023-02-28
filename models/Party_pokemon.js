@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection')
 
-class Party extends Model {
-    // Party Methods
+class Party_pokemon extends Model {
+    // Party_pokemon Methods
 }
 
-Party.init(
+Party_pokemon.init(
     {
         id: {
             type: DataTypes.INTEGER,
