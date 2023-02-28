@@ -36,4 +36,4 @@ Party_pokemon.init(
     }
 )
 
-module.exports = Party
+module.exports = Party_pokemon
