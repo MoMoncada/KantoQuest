@@ -24,7 +24,15 @@ Pokemon.init(
         },
         description: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         }
+    },
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'pokemon'
     }
 )
+
+module.exports = Pokemon
