@@ -1,11 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection')
 
-class Party extends Model {
-    // Party Methods
-}
+class Pokedex_pokemon extends Model {}
 
-Party.init(
+Pokedex_pokemon.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -13,14 +11,18 @@ Party.init(
             primaryKey: true,
             autoIncrement: true
         },
-        party_score: {
-            type: DataTypes.INTEGER            
-        },
-        user_id: {
+        pokedex_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'pokedex',
                 key: 'id'
+            },
+        },
+        pokemon_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'pokemon',
+                key: 'id',
             }
         }
     },
@@ -28,8 +30,8 @@ Party.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'pokedex'
+        modelName: 'pokedex_pokemon'
     }
 )
 
-module.exports = Party
+module.exports = Pokedex_pokemon

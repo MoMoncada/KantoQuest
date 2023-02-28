@@ -2,6 +2,8 @@ const Pokedex = require('./Pokedex')
 const User = require('./User')
 const Party = require('./Party')
 const Pokemon = require('./Pokemon')
+const Pokedex_pokemon = require('./Pokedex_pokemon')
+const Party_pokemon = require('./Party_pokemon')
 
 // User has one Pokedex
 User.hasOne(Pokedex, {
@@ -45,7 +47,5 @@ Pokemon.belongsToMany(Party, {
 Party.belongsToMany(Pokemon, {
     through: Party_pokemon
 })
-
-
 
 Pokemon.belongsToMany()

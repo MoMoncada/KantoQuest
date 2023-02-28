@@ -13,14 +13,18 @@ Party.init(
             primaryKey: true,
             autoIncrement: true
         },
-        party_score: {
-            type: DataTypes.INTEGER            
-        },
-        user_id: {
+        pokemon_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
-                key: 'id'
+                model: 'pokemon',
+                key: 'id',
+            }
+        },
+        party_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'party',
+                key: 'id',
             }
         }
     },
@@ -28,7 +32,7 @@ Party.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'pokedex'
+        modelName: 'party_pokemon'
     }
 )
 

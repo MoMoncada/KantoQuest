@@ -19,13 +19,6 @@ Pokedex.init(
                 model: 'user',
                 key: 'id',
             }
-        },
-        pokemon_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'pokemon',
-                key: 'id'
-            }
         }
     },
     {
