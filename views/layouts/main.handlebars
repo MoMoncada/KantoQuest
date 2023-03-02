@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon Thing!</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+
+    {{! <!-- Top Navbar --> }}
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="/" class="navbar-brand">PokeM8</a>
+        <button class="navbar-button">Homepage</button>
+        <button class="navbar-button">Profile</button>
+      </div>
+      <div class="navbar-right">
+        <button class="navbar-button">Pokedex</button>
+        <button class="navbar-button">Sign-up</button>
+      </div>
+    </nav>
+
+    {{! <!-- Content Container --> }}
+    <main class="container">
+      {{{body}}}
+    </main>
+
+    {{! <!-- Scripts --> }}
+    {{! <script src="/js/scripts.js"></script> }}
+
+  </body>
+</html>
