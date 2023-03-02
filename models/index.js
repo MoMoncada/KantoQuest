@@ -49,3 +49,5 @@ Party.belongsToMany(Pokemon, {
 })
 
 Pokemon.belongsToMany()
+
+module.exports = { Pokedex, User, Party, Pokemon, Pokedex_pokemon, Party_pokemon }

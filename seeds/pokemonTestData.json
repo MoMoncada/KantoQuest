@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Pokemon1",
+        "types": ["Type1", "Type2"],
+        "description": "This is Pokemon1"
+    },
+    {
+        "name": "Pokemon2",
+        "types": ["Type3", "Type4"],
+        "description": "This is Pokemon2"
+    },
+    {
+        "name": "Pokemon3",
+        "types": ["Type5", "Type6"],
+        "description": "This is Pokemon3"
+    },
+    {
+        "name": "Pokemon4",
+        "types": ["Type3", "Type1"],
+        "description": "This is Pokemon4"
+    },
+    {
+        "name": "Pokemon5",
+        "types": ["Type4", "Type2"],
+        "description": "This is Pokemon5"
+    }
+]
