@@ -1,0 +1,17 @@
+{{!-- Center of Page --}}
+<section>
+    {{!-- Search Bar --}}
+    <div>
+      <label for="pokedex-search">Search:</label>
+      <input type="text" id="pokedex-search"/>
+    </div>
+    {{#each pokemons as |pokemon|}}
+    {{!-- An Individual Pokemons Pokedex Info--}}
+    <div>
+        <p>ID</p>
+        <img>
+        <p>Name</p>
+        <p>Type1, Type2</p>
+    </div>
+    {{/each}}
+</section>
