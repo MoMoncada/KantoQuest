@@ -81,7 +81,7 @@ function getPokemon (id) {
 const Pokedex = require('pokedex-promise-v2');
 const P = new Pokedex();
 
-var pokemonArray = []
+const pokemonArray = []
 
 function createPokemon(data) {
     pokemon = {
@@ -111,7 +111,7 @@ async function seedPokemon() {
        data.forEach(pokemon => {
         createPokemon(pokemon)
        })
-       console.log(pokemonArray)
+       return JSON.parse(pokemonArray);
     })
 }
 seedPokemon()
