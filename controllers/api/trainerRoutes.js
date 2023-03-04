@@ -1,17 +1,19 @@
 const router = require('express').Router();
-const { Party_pokemon, Party, Pokedex_pokemon, Pokedex, Pokemon, User } = require('../../models');
+const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
+const { Pokedex, Pokemon, Trainer, TrainerParty, TrainerPokedex } = require('../../models');
 
-//--- GET route that fetches all the users from the db (excluding: password)---//
-router.get('/', async (req, res) => {
+//--- GET route that fetches all the trainers from the db (excluding: password)---//
+router.get('/', withAuth, async (req, res) => {
     
     console.log('GET req is working');
 
     try {
         //TODO: uncomment when this is set 
-        // const dbUserData = await User.findAll({
+        // const dbTrainerData = await Trainer.findAll({
         //   attributes: { exclude: ['password'] }
         // });
-        // res.json(dbUserData);
+        // res.json(dbTrainerData);
       } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -19,14 +21,14 @@ router.get('/', async (req, res) => {
 
 });
 
-//--- GET route that fetches a user by :id ---//
-router.get('/:id', async (req, res) => {
+//--- GET route that fetches a trainer by :id ---//
+router.get('/:id', withAuth, async (req, res) => {
     
-    console.log('GET route by :id working');
+    console.log('GET route by trainer :id working');
 
     try {
     //     //TODO: uncomment this block if needed
-    //     const dbUserData = await User.findOne({
+    //     const dbTrainerData = await Trainer.findOne({
     //         attributes: { exclude: ['password'] },
     //         where: {
     //           id: req.params.id
@@ -34,11 +36,11 @@ router.get('/:id', async (req, res) => {
     //         include: []
 
     // });
-    // if(!dbUserData) {
-    //     res.status(404).json({ message: 'No user found with this id' });
+    // if(!dbTrainerData) {
+    //     res.status(404).json({ message: 'No trainer found with this id' });
     //     return;
     //   }
-      res.json(dbUserData);
+      res.json(dbTrainerData);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -46,26 +48,26 @@ router.get('/:id', async (req, res) => {
   });
 
 
-//--- POST route that creates a new user in the db ---//
- router.post('/', async (req, res) => {
+//--- POST route that creates a new trainer in the db ---//
+ router.post('/', withAuth, async (req, res) => {
 
-    console.log('POST route for new user is working');
+    console.log('POST route for new Trainer is working');
 
     try {
 
         //TODO: uncomment when needed
 
-    //   const dbUserData = await User.create({
+    //   const dbTrainerData = await Trainer.create({
     //     username: req.body.username,
     //     email: req.body.email,
     //     password: req.body.password
     //   });
     //   req.session.save(() => {
-    //     req.session.user_id = dbUserData.id;
-    //     req.session.username = dbUserData.username;
+    //     req.session.id = dbTrainerData.id;
+    //     req.session.username = dbTrainerData.username;
     //     req.session.loggedIn = true;
   
-    //     res.json(dbUserData);
+    //     res.json(dbTrainerData);
 
     //   });
 
@@ -78,22 +80,22 @@ router.get('/:id', async (req, res) => {
 
 //--- POST route for the /login endpoint ---//
 //TODO: not sure if this one can be tested 
-router.post('/login', async (req, res) => {
+router.post('/login', withAuth, async (req, res) => {
 
     console.log('Im working!');
     
     try {
-    //   const dbUserData = await User.findOne({
+    //   const dbTrainerData = await Trainer.findOne({
     //     where: {
     //       email: req.body.email
     //     }
     //   });
-    //   if (!dbUserData) {
-    //     res.status(400).json({ message: 'No user with that email address!' });
+    //   if (!dbTrainerData) {
+    //     res.status(400).json({ message: 'No trainer with that email address!' });
     //     return;
     //   }
   
-    //   const validPassword = dbUserData.checkPassword(req.body.password);
+    //   const validPassword = dbTrainerData.checkPassword(req.body.password);
   
     //   if (!validPassword) {
     //     res.status(400).json({ message: 'Incorrect password!' });
@@ -101,11 +103,11 @@ router.post('/login', async (req, res) => {
     //   }
   
     //   req.session.save(() => {
-    //     req.session.user_id = dbUserData.id;
-    //     req.session.username = dbUserData.username;
+    //     req.session.id = dbTrainerData.id;
+    //     req.session.username = dbTrainerData.username;
     //     req.session.loggedIn = true;
   
-    //     res.json({ user: dbUserData, message: 'You are now logged in!' });
+    //     res.json({ trainer: dbTrainerData, message: 'You are now logged in!' });
     //   });
     } catch (err) {
       console.log(err);
@@ -130,20 +132,20 @@ router.post('/login', async (req, res) => {
 
 
 
-// DELETE /users/:id: Delete a user by id.
+// DELETE /trainer/:id: Delete a trainer by id.
 //TODO: uncomment when needed
 // router.delete('/:id', async (req, res) => {
 //     try {
-//       const dbUserData = await User.destroy({
+//       const dbTrainerData = await Trainer.destroy({
 //         where: {
 //           id: req.params.id
 //         }
 //       });
-//       if (!dbUserData) {
-//         res.status(404).json({ message: 'No user found with this id' });
+//       if (!dbTrainerData) {
+//         res.status(404).json({ message: 'No triner found with this id' });
 //         return;
 //       }
-//       res.json(dbUserData);
+//       res.json(dbTrainerData);
 //     } catch (err) {
 //       console.log(err);
 //       res.status(500).json(err);
