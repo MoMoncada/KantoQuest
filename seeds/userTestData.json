@@ -1,31 +1,31 @@
 [
     {
-        "name": "Mark",
+        "username": "Mark",
         "email": "mark@test.com",
         "password": "password12345"
     },
     {
-        "name": "Ryan",
+        "username": "Ryan",
         "email": "ryan@test.com",
         "password": "password12345"
     },
     {
-        "name": "Mauxi",
+        "username": "Mauxi",
         "email": "mauxi@test.com",
         "password": "password12345"
     },
     {
-        "name": "John",
+        "username": "John",
         "email": "John@test.com",
         "password": "password12345"
     },
     {
-        "name": "Bob",
+        "username": "Bob",
         "email": "Bob@test.com",
         "password": "password12345"
     },
     {
-        "name": "Katie",
+        "username": "Katie",
         "email": "Katie@test.com",
         "password": "password12345"
     }

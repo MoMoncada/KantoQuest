@@ -1,53 +1,86 @@
-const Pokedex = require('./Pokedex')
-const User = require('./User')
-const Party = require('./Party')
-const Pokemon = require('./Pokemon')
-const Pokedex_pokemon = require('./Pokedex_pokemon')
-const Party_pokemon = require('./Party_pokemon')
+const Pokedex = require("./Pokedex");
+const Pokemon = require("./Pokemon");
+const Trainer = require("./Trainer");
+const TrainerParty = require("./TrainerParty");
+const TrainerPokedex = require("./TrainerPokedex");
 
-// User has one Pokedex
-User.hasOne(Pokedex, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-})
-
-Pokedex.belongsTo(User, {
-    foreignKey: 'user_id'
-})
-
-// User has many parties
-User.hasMany(Party, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-})
-
-Party.belongsTo(User, {
-    foreignKey: 'user_id'
-})
-
-// Pokedex can have many Pokemon
+// ------
+// Pokedex has many Pokemon
 Pokedex.hasMany(Pokemon, {
-    foreignKey: 'pokemon_id',
-    onDelete: 'SET NULL'
-})
+  foreignKey: "pokedex_id",
+});
 
-// Pokemon can belong to many Pokedex
-Pokemon.belongsToMany(Pokedex, {
-    through: Pokedex_pokemon
-})
+// Pokemon belongs to Pokedex
+Pokemon.belongsTo(Pokedex, {
+  foreignKey: "pokedex_id",
+});
+// ------
 
-Pokedex.belongsToMany(Pokemon, {
-    through: Pokedex_pokemon
-})
+// ------
+// TrainerPokedex has many Pokemon
+TrainerPokedex.hasMany(Pokemon, {
+  foreignKey: "trainer_pokedex_id",
+});
 
-Pokemon.belongsToMany(Party, {
-    through: Party_pokemon
-})
+// Pokemon belongs to TrainerPokedex
+Pokemon.belongsTo(TrainerPokedex, {
+  foreignKey: "trainer_pokedex_id",
+});
+// ------
 
-Party.belongsToMany(Pokemon, {
-    through: Party_pokemon
-})
+// ------
+// TrainerPokedex has many TrainerParty
+TrainerPokedex.hasMany(TrainerParty, {
+  foreignKey: "trainer_pokedex_id",
+});
 
-Pokemon.belongsToMany()
+// TrainerParty belongs to TrainerPokedex
+TrainerParty.belongsTo(TrainerPokedex, {
+  foreignKey: "trainer_pokedex_id",
+});
+// ------
 
-module.exports = { Pokedex, User, Party, Pokemon, Pokedex_pokemon, Party_pokemon }
+// ------
+// Trainer has one Trainer Pokedex
+Trainer.hasOne(TrainerPokedex, {
+  foreignKey: "trainer_id",
+});
+
+// TrainerPokedex belongs to Trainer
+TrainerPokedex.belongsTo(Trainer, {
+    foreignKey: "trainer_id",
+  });
+// ------
+
+// ------
+// Trainer can have many TrainerParties
+Trainer.hasMany(TrainerParty, {
+  foreignKey: "trainer_id",
+});
+
+// TrainerParty belongs to Trainer
+TrainerParty.belongsTo(Trainer, {
+  foreignKey: "trainer_id",
+});
+// ------
+
+module.exports = {
+  Pokedex,
+  Pokemon,
+  Trainer,
+  TrainerParty,
+  TrainerPokedex,
+};
+
+// This was the many to many relationship party I think i've managed to remove
+// // Pokemon belongs to many TrainerParty through TrainerPartyPokemon
+// Pokemon.belongsToMany(TrainerParty, {
+//   through: TrainerPartyPokemon,
+//   foreignKey: "trainer_party_id",
+// });
+
+// // TrainerParty belongs to many Pokemon through TrainerPartyPokemon
+// TrainerParty.belongsToMany(Pokemon, {
+//   through: TrainerPartyPokemon,
+//   foreignKey: "pokemon_id",
+// });
