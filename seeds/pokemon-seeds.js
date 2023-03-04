@@ -102,7 +102,7 @@ function createPokemon(data) {
 async function seedPokemon() {
     pokemonData = []
     // create pokemonData array
-    for (let i = 1; i < 151; i++) {
+    for (let i = 1; i <= 151; i++) {
         pokemonData.push(P.getPokemonByName(i))
 
     }
@@ -111,7 +111,7 @@ async function seedPokemon() {
        data.forEach(pokemon => {
         createPokemon(pokemon)
        })
-       return JSON.parse(pokemonArray);
+       return pokemonArray
     })
 }
 seedPokemon()
