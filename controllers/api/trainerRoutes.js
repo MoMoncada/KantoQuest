@@ -57,19 +57,19 @@ router.get('/:id', withAuth, async (req, res) => {
 
         //TODO: uncomment when needed
 
-    //   const dbTrainerData = await Trainer.create({
-    //     username: req.body.username,
-    //     email: req.body.email,
-    //     password: req.body.password
-    //   });
-    //   req.session.save(() => {
-    //     req.session.id = dbTrainerData.id;
-    //     req.session.username = dbTrainerData.username;
-    //     req.session.loggedIn = true;
+      const dbTrainerData = await Trainer.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+      });
+      req.session.save(() => {
+        req.session.id = dbTrainerData.id;
+        req.session.username = dbTrainerData.username;
+        req.session.loggedIn = true;
   
-    //     res.json(dbTrainerData);
+        res.json(dbTrainerData);
 
-    //   });
+      });
 
     } catch (err) {
       console.log(err);
@@ -85,30 +85,30 @@ router.post('/login', withAuth, async (req, res) => {
     console.log('Im working!');
     
     try {
-    //   const dbTrainerData = await Trainer.findOne({
-    //     where: {
-    //       email: req.body.email
-    //     }
-    //   });
-    //   if (!dbTrainerData) {
-    //     res.status(400).json({ message: 'No trainer with that email address!' });
-    //     return;
-    //   }
+      const dbTrainerData = await Trainer.findOne({
+        where: {
+          email: req.body.email
+        }
+      });
+      if (!dbTrainerData) {
+        res.status(400).json({ message: 'No trainer with that email address!' });
+        return;
+      }
   
-    //   const validPassword = dbTrainerData.checkPassword(req.body.password);
+      const validPassword = dbTrainerData.checkPassword(req.body.password);
   
-    //   if (!validPassword) {
-    //     res.status(400).json({ message: 'Incorrect password!' });
-    //     return;
-    //   }
+      if (!validPassword) {
+        res.status(400).json({ message: 'Incorrect password!' });
+        return;
+      }
   
-    //   req.session.save(() => {
-    //     req.session.id = dbTrainerData.id;
-    //     req.session.username = dbTrainerData.username;
-    //     req.session.loggedIn = true;
+      req.session.save(() => {
+        req.session.id = dbTrainerData.id;
+        req.session.username = dbTrainerData.username;
+        req.session.loggedIn = true;
   
-    //     res.json({ trainer: dbTrainerData, message: 'You are now logged in!' });
-    //   });
+        res.json({ trainer: dbTrainerData, message: 'You are now logged in!' });
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -152,4 +152,4 @@ router.post('/login', withAuth, async (req, res) => {
 //     }
 //   });
   
-//   module.exports = router;
+  module.exports = router;
