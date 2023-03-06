@@ -11,11 +11,11 @@ router.get('/', async (req, res) => {
     console.log('Pokemons GET route is working');
     try {
         //TODO: unmcomment when needed
-        // const pokemonData = await Pokemon.findAll();
-        // request.statusCode(200).json(pokemonData);
+        const pokemonData = await Pokedex.findAll();
+        res.status(200).json(pokemonData);
     } catch (err) {
         console.log(err);
-        request.status(500).json({message:''})
+        res.status(500).json({message:'No Pokemons found in this region'})
     }
 });
 
