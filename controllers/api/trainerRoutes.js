@@ -43,7 +43,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
 
 //--- POST route that creates a new trainer in the db ---//
- router.post('/', withAuth, async (req, res) => {
+ router.post('/', async (req, res) => {
 
     console.log('POST route for new Trainer is working');
 
@@ -70,7 +70,9 @@ router.get('/:id', withAuth, async (req, res) => {
 
 
 //--- POST route for the /login endpoint ---//
+
 //FIXME: this is logging in the console as being inserted into the session table, but 400 error with Insomnia
+=======
 router.post('/login', async (req, res) => {
 
     console.log('Im working!');
