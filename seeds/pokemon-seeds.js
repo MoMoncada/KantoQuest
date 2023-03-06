@@ -1,4 +1,6 @@
 
+const https = require('https');
+
 // let i = 1
 // url = 'https://pokeapi.co/api/v2/generation/1'
 
@@ -54,6 +56,7 @@
 // For each pokemon create sequelize object
  
 
+
 function getPokemon (id) { 
        
     https.get(`https://pokeapi.co/api/v2/pokemon/${id}`, function(res) {
@@ -84,7 +87,7 @@ const P = new Pokedex();
 const pokemonArray = []
 
 function createPokemon(data) {
-    pokemon = {
+   const pokemon = {
         id :data.id,
         name: data.name,
         sprites: {
@@ -100,18 +103,21 @@ function createPokemon(data) {
 
 
 async function seedPokemon() {
-    pokemonData = []
+    const pokemonData = [];
     // create pokemonData array
     for (let i = 1; i <= 151; i++) {
-        pokemonData.push(P.getPokemonByName(i))
-
+        pokemonData.push(P.getPokemonByName(i));
     }
 
-    Promise.all(pokemonData).then((data) => {
-       data.forEach(pokemon => {
-        createPokemon(pokemon)
-       })
-       return pokemonArray
-    })
+    return Promise.all(pokemonData).then((data) => {
+        data.forEach(pokemon => {
+            createPokemon(pokemon);
+        })
+        return pokemonArray;
+    });
 }
-seedPokemon()
+//TODO: nothing to do, just changed the way the array returns, I was getting an empty array before
+seedPokemon().then((pokemonArray) => {
+    console.log(pokemonArray);
+    process.exit(0);
+});
