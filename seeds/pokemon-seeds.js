@@ -1,5 +1,5 @@
 
-const https = require('https');
+// const https = require('https');
 
 // let i = 1
 // url = 'https://pokeapi.co/api/v2/generation/1'
@@ -57,67 +57,80 @@ const https = require('https');
  
 
 
-function getPokemon (id) { 
+// function getPokemon (id) { 
        
-    https.get(`https://pokeapi.co/api/v2/pokemon/${id}`, function(res) {
-    let body = "";
+//     https.get(`https://pokeapi.co/api/v2/pokemon/${id}`, function(res) {
+//     let body = "";
 
-    res.on("data", (chunk) => {
-        body += chunk;
-    });
+//     res.on("data", (chunk) => {
+//         body += chunk;
+//     });
 
-    res.on("end", () => {
-        try {
-            let json = JSON.parse(body);
-             createPokemon(json)
-            // do something with JSON
-        } catch (error) {
-            console.error(error.message);
-        };
-    });
+//     res.on("end", () => {
+//         try {
+//             let json = JSON.parse(body);
+//              createPokemon(json)
+//             // do something with JSON
+//         } catch (error) {
+//             console.error(error.message);
+//         };
+//     });
 
-}).on("error", (error) => {
-    console.error(error.message);
-});
+// }).on("error", (error) => {
+//     console.error(error.message);
+// });
 
-}
-const Pokedex = require('pokedex-promise-v2');
+// }
+
+const Pokedex = require("pokedex-promise-v2");
+const { Pokemon } = require("../models");
+
 const P = new Pokedex();
 
-const pokemonArray = []
+const pokemonArray = [];
 
 function createPokemon(data) {
-   const pokemon = {
-        id :data.id,
-        name: data.name,
-        sprites: {
-                front: data.sprites.front_default,
-                back: data.sprites.back_default
-            },
-        type: data.types
-    }
-
-    pokemonArray.push(pokemon)
+  // When creating a new Pokemon checks if it has two types or not and runs the correct code
+  if (data.types[1]) {
+    const pokemon = {
+      id: data.id,
+      name: data.name,
+      sprite: data.sprites.front_default,
+      type_one: data.types[0].type.name,
+      type_two: data.types[1].type.name,
+    };
+    return pokemonArray.push(pokemon);
+  } else {
+    const pokemon = {
+      id: data.id,
+      name: data.name,
+      sprite: data.sprites.front_default,
+      type_one: data.types[0].type.name,
+    };
+    return pokemonArray.push(pokemon);
+  }
 }
-    
-
 
 async function seedPokemon() {
-    const pokemonData = [];
-    // create pokemonData array
-    for (let i = 1; i <= 151; i++) {
-        pokemonData.push(P.getPokemonByName(i));
-    }
-
-    return Promise.all(pokemonData).then((data) => {
-        data.forEach(pokemon => {
-            createPokemon(pokemon);
-        })
-        return pokemonArray;
+  const pokemonData = [];
+  // create pokemonData array
+  // TODO: Reduced to 10, Change when no more testing is needed
+  for (let i = 1; i <= 10; i++) {
+    pokemonData.push(P.getPokemonByName(i));
+  }
+  return Promise.all(pokemonData)
+    .then((data) => {
+      data.forEach((pokemon) => {
+        createPokemon(pokemon);
+      });
+      return pokemonArray;
+    })
+    .then((pokemonArray) => {
+      Pokemon.bulkCreate(pokemonArray);
+    //   console.log(pokemonArray);
     });
 }
-//TODO: nothing to do, just changed the way the array returns, I was getting an empty array before
-seedPokemon().then((pokemonArray) => {
-    console.log(pokemonArray);
-    process.exit(0);
-});
+
+seedPokemon()
+
+module.exports = seedPokemon;
