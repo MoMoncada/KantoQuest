@@ -1,27 +1,42 @@
 const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Pokedex, Pokemon } = require('../../models');
-//TODO: no withAuth as I believe you will be allowed to see the Pokedex withouth login in
+const { Pokedex }= require('../../models');
+const { request } = require('express');
 
 
 
-//-- GET req for pokedex --//
-router.get('/pokedex', async (req,res) => {
-    console.log('Pokedex here');
+
+
+//-- GET req for all pokemons --//
+router.get('/', async (req, res) => {
+    console.log('Pokemons GET route is working');
     try {
-        //TODO: I believe this is the only req we need as the info by :id is in the pokemonRoutes .js file
-        // //Pokedex entries  
-        // const pokedexData = await Pokedex.findAll({
-        //     include[{model: Pokemon}],
-        // });
-        // return res.json(pokedexData);
+        //TODO: unmcomment when needed
+        // const pokemonData = await Pokemon.findAll();
+        // request.statusCode(200).json(pokemonData);
     } catch (err) {
+        console.log(err);
+        request.status(500).json({message:''})
+    }
+});
+
+
+//-- GET req for a pokemon by :id --//
+router.get('/:id', async (req, res) => {
+    console.log('GET req for a single pokemon is working');
+    try {
+        //TODO: uncomment when needed and check parameters
+        // const pokemonData = await Pokemon.findOne(req.params.id);
+        // if (!pokemonData) {
+        //     res.status(404).json({message: 'This Pokemon is not available in this region'});
+        // } else {
+        //     res.status(200).json(pokemonData);
+        // }
+    } catch {
         console.error(err);
-        res.status(500).json({message: 'No Pokedex found here!'});
+        res.status(500).json({ message: 'This pokemon is not available in this region!'})
     }
 });
 
 
 module.exports = router;
-
 

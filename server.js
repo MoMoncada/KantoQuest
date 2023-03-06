@@ -3,7 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 // When controllers folder has code then uncomment the following line
-// const routes = require("./controllers");
+const routes = require("./controllers");
 
 // When helper file has code then uncomment the following line
 // const helpers = require("./utils/helpers");
@@ -44,7 +44,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // When controllers folder has code then uncomment the following line
-// app.use(routes);
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Lapras used SURF on http://localhost:" + PORT + ' 🌊'));
