@@ -49,7 +49,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
 
 //--- POST route that creates a new trainer in the db ---//
- router.post('/', withAuth, async (req, res) => {
+ router.post('/', async (req, res) => {
 
     console.log('POST route for new Trainer is working');
 
@@ -67,7 +67,7 @@ router.get('/:id', withAuth, async (req, res) => {
         req.session.username = dbTrainerData.username;
         req.session.loggedIn = true;
   
-        res.json(dbTrainerData);
+        res.status(200).json(dbTrainerData);
 
       });
 
@@ -80,7 +80,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
 //--- POST route for the /login endpoint ---//
 //TODO: not sure if this one can be tested 
-router.post('/login', withAuth, async (req, res) => {
+router.post('/login', async (req, res) => {
 
     console.log('Im working!');
     
