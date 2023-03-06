@@ -7,11 +7,6 @@
     </div>
     {{#each pokemons as |pokemon|}}
     {{!-- An Individual Pokemons Pokedex Info--}}
-    <div>
-        <p>ID</p>
-        <img>
-        <p>Name</p>
-        <p>Type1, Type2</p>
-    </div>
+      {{>pokedex-entry}}
     {{/each}}
 </section>
