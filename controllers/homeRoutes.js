@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Party_pokemon, Party, Pokedex_pokemon, Pokedex, Pokemon, User } = require('../models');
+const { Pokedex, Trainer, TrainerParty, TrainerPokedex } = require('../models');
 
 
 //-- GET request for the homepage --//
@@ -36,3 +36,6 @@ router.get('/', async (req, res) => {
 
 
 //TODO: any other GET requests we might find along the way
+
+
+module.exports = router;

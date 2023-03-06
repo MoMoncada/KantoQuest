@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Party_pokemon, Party, Pokedex_pokemon, Pokedex, Pokemon, User } = require('../models');
+const { Pokedex, Trainer, TrainerParty, TrainerPokedex } = require('../models');
 const withAuth = require('../utils/auth');
 
 //-- GET req to the '/' endpoint --//
@@ -20,3 +20,6 @@ router.get('/', withAuth, async (req, res) => {
 
 
 //-- TODO:  GET request :id endpoint, not sure if which one we need yet ---//
+
+
+module.exports = router;

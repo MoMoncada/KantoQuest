@@ -6,7 +6,7 @@ const { request } = require('express');
 
 
 //-- GET req for all trainer pokedex --//
-router.get('/trainerPokedex', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     console.log('All Trainer Pokedexes here');
     try {
         //TODO: uncomment when needed
