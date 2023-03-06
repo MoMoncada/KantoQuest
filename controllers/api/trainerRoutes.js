@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
-const { Pokedex, Pokemon, Trainer, TrainerParty, TrainerPokedex } = require('../../models');
+const { Pokedex, Trainer, TrainerParty, TrainerPokedex } = require('../../models');
 
 //--- GET route that fetches all the trainers from the db (excluding: password)---//
 router.get('/', withAuth, async (req, res) => {
@@ -9,11 +9,10 @@ router.get('/', withAuth, async (req, res) => {
     console.log('GET req is working');
 
     try {
-        //TODO: uncomment when this is set 
-        // const dbTrainerData = await Trainer.findAll({
-        //   attributes: { exclude: ['password'] }
-        // });
-        // res.json(dbTrainerData);
+          const dbTrainerData = await Trainer.findAll({
+          attributes: { exclude: ['password'] }
+        });
+        res.json(dbTrainerData);
       } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -27,19 +26,14 @@ router.get('/:id', withAuth, async (req, res) => {
     console.log('GET route by trainer :id working');
 
     try {
-    //     //TODO: uncomment this block if needed
-    //     const dbTrainerData = await Trainer.findOne({
-    //         attributes: { exclude: ['password'] },
-    //         where: {
-    //           id: req.params.id
-    //         },
-    //         include: []
-
-    // });
-    // if(!dbTrainerData) {
-    //     res.status(404).json({ message: 'No trainer found with this id' });
-    //     return;
-    //   }
+        const dbTrainerData = await Trainer.findByPk(req.params.id, {
+        attributes: { exclude: ['password'] },
+          
+    });
+    if(!dbTrainerData) {
+        res.status(404).json({ message: 'No trainer found with this id' });
+        return;
+      }
       res.json(dbTrainerData);
     } catch (err) {
       console.log(err);
@@ -54,20 +48,17 @@ router.get('/:id', withAuth, async (req, res) => {
     console.log('POST route for new Trainer is working');
 
     try {
-
-        //TODO: uncomment when needed
-
-      const dbTrainerData = await Trainer.create({
+      const newTrainerData = await Trainer.create({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password
       });
       req.session.save(() => {
-        req.session.id = dbTrainerData.id;
-        req.session.username = dbTrainerData.username;
+        req.session.id = newTrainerData.id;
+        req.session.username = newTrainerData.username;
         req.session.loggedIn = true;
   
-        res.json(dbTrainerData);
+        res.json(newTrainerData);
 
       });
 
@@ -79,15 +70,16 @@ router.get('/:id', withAuth, async (req, res) => {
 
 
 //--- POST route for the /login endpoint ---//
-//TODO: not sure if this one can be tested 
-router.post('/login', withAuth, async (req, res) => {
+//FIXME: this is logging in the console as being inserted into the session table, but 400 error with Insomnia
+router.post('/login', async (req, res) => {
 
     console.log('Im working!');
     
     try {
       const dbTrainerData = await Trainer.findOne({
         where: {
-          email: req.body.email
+          email: req.body.email,
+          password: req.body.password
         }
       });
       if (!dbTrainerData) {
@@ -118,7 +110,7 @@ router.post('/login', withAuth, async (req, res) => {
 
 
 //--- POST route for the /logout endpoint ---//
-//TODO: uncomment when needed
+//TODO: Didn't work on this one as login didn't work properly
 // router.post('/logout', (req, res) => {
 //     if (req.session.loggedIn) {
 //       req.session.destroy(() => {
@@ -133,23 +125,23 @@ router.post('/login', withAuth, async (req, res) => {
 
 
 // DELETE /trainer/:id: Delete a trainer by id.
-//TODO: uncomment when needed
-// router.delete('/:id', async (req, res) => {
-//     try {
-//       const dbTrainerData = await Trainer.destroy({
-//         where: {
-//           id: req.params.id
-//         }
-//       });
-//       if (!dbTrainerData) {
-//         res.status(404).json({ message: 'No triner found with this id' });
-//         return;
-//       }
-//       res.json(dbTrainerData);
-//     } catch (err) {
-//       console.log(err);
-//       res.status(500).json(err);
-//     }
-//   });
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+      const dbTrainerData = await Trainer.destroy({
+        where: {
+          id: req.params.id
+        }
+       
+      });
+      if (!dbTrainerData) {
+        res.status(404).json({ message: 'No trainer found with this id' });
+        return;
+      }
+      res.json(dbTrainerData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
   
   module.exports = router;

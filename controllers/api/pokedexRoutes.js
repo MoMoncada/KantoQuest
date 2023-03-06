@@ -10,7 +10,6 @@ const { request } = require('express');
 router.get('/', async (req, res) => {
     console.log('Pokemons GET route is working');
     try {
-        //TODO: unmcomment when needed
         const pokemonData = await Pokedex.findAll();
         res.status(200).json(pokemonData);
     } catch (err) {
@@ -24,14 +23,13 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     console.log('GET req for a single pokemon is working');
     try {
-        //TODO: uncomment when needed and check parameters
-        // const pokemonData = await Pokemon.findOne(req.params.id);
-        // if (!pokemonData) {
-        //     res.status(404).json({message: 'This Pokemon is not available in this region'});
-        // } else {
-        //     res.status(200).json(pokemonData);
-        // }
-    } catch {
+        const pokemonData = await Pokedex.findByPk(req.params.id);
+        if (!pokemonData) {
+            res.status(404).json({message: 'This Pokemon is not available in this region'});
+        } else {
+            res.status(200).json(pokemonData);
+        }
+    } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'This pokemon is not available in this region!'})
     }

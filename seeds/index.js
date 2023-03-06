@@ -1,7 +1,6 @@
 const sequelize = require("../config/connection");
 const {
   Pokedex,
-  Pokemon,
   Trainer,
   TrainerParty,
   TrainerPokedex,
