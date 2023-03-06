@@ -113,13 +113,11 @@ async function seedPokemon() {
         data.forEach(pokemon => {
             createPokemon(pokemon);
         })
-
-        console.log(pokemonArray.type)
         return pokemonArray;
     });
 }
 //TODO: nothing to do, just changed the way the array returns, I was getting an empty array before
 seedPokemon().then((pokemonArray) => {
-    console.log(pokemonArray[0].type[1]);
+    console.log(pokemonArray);
     process.exit(0);
 });
