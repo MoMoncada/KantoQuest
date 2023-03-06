@@ -23,6 +23,13 @@ TrainerPokedex.init(
         model: "trainer",
         key: "id",
       },
+    },    
+    pokedex_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "pokedex",
+        key: "id",
+      }
     },
   },
   {
