@@ -1,0 +1,14 @@
+<section class="card">
+        <p>{{id}}D</p>
+        <img src="{{sprites[0]}}">
+        <p>{{name}}</p>
+
+        <div>
+        // if pokemon has 2 types
+        {{#if type[1]}} 
+            <p class="{{type[0].name}}">{{type[0].name}}</p><p class="{{type[1].name}}" >{{type[1].name}}</p>
+        {{else}}
+            <p class="{{type[0].name}}">{{type[0].name}}</p>
+        {{/if}}
+        </div>
+</section>

@@ -33,9 +33,6 @@ router.get('/', async (req, res) => {
 
 // });
 
-
-
 //TODO: any other GET requests we might find along the way
-
 
 module.exports = router;
