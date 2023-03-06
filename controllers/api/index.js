@@ -8,7 +8,7 @@ const trainerPokedexRoutes = require('./trainerPokedex');
 
 router.use('/pokedex');
 router.use('/pokemon');
-router.use('/trainer');
+router.use('/trainer', trainerRoutes);
 router.use('/trainerParty');
 router.use('/trainerPokedex');
 
