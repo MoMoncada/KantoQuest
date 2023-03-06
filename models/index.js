@@ -1,29 +1,16 @@
 const Pokedex = require("./Pokedex");
-const Pokemon = require("./Pokemon");
 const Trainer = require("./Trainer");
 const TrainerParty = require("./TrainerParty");
 const TrainerPokedex = require("./TrainerPokedex");
 
 // ------
-// Pokedex has many Pokemon
-Pokedex.hasMany(Pokemon, {
-  foreignKey: "pokedex_id",
-});
-
-// Pokemon belongs to Pokedex
-Pokemon.belongsTo(Pokedex, {
-  foreignKey: "pokedex_id",
-});
-// ------
-
-// ------
 // TrainerPokedex has many Pokemon
-TrainerPokedex.hasMany(Pokemon, {
+TrainerPokedex.hasMany(Pokedex, {
   foreignKey: "trainer_pokedex_id",
 });
 
 // Pokemon belongs to TrainerPokedex
-Pokemon.belongsTo(TrainerPokedex, {
+Pokedex.belongsTo(TrainerPokedex, {
   foreignKey: "trainer_pokedex_id",
 });
 // ------
@@ -66,21 +53,7 @@ TrainerParty.belongsTo(Trainer, {
 
 module.exports = {
   Pokedex,
-  Pokemon,
   Trainer,
   TrainerParty,
   TrainerPokedex,
 };
-
-// This was the many to many relationship party I think i've managed to remove
-// // Pokemon belongs to many TrainerParty through TrainerPartyPokemon
-// Pokemon.belongsToMany(TrainerParty, {
-//   through: TrainerPartyPokemon,
-//   foreignKey: "trainer_party_id",
-// });
-
-// // TrainerParty belongs to many Pokemon through TrainerPartyPokemon
-// TrainerParty.belongsToMany(Pokemon, {
-//   through: TrainerPartyPokemon,
-//   foreignKey: "pokemon_id",
-// });
