@@ -3,16 +3,26 @@ const Trainer = require("./Trainer");
 const TrainerParty = require("./TrainerParty");
 const TrainerPokedex = require("./TrainerPokedex");
 
+
+//Trainers - Pokemon
+Trainer.belongsToMany(Pokedex, {
+  through: TrainerPokedex
+})
+
+Pokemon.belongsToMany(Trainer, {
+  through: TrainerPokedex
+})
+
 // ------
 // TrainerPokedex has many Pokemon
-TrainerPokedex.hasMany(Pokedex, {
-  foreignKey: "trainer_pokedex_id",
-});
+// TrainerPokedex.hasMany(Pokedex, {
+//   foreignKey: "trainer_pokedex_id",
+// });
 
-// Pokemon belongs to TrainerPokedex
-Pokedex.belongsTo(TrainerPokedex, {
-  foreignKey: "trainer_pokedex_id",
-});
+// // Pokemon belongs to TrainerPokedex
+// Pokedex.belongsTo(TrainerPokedex, {
+//   foreignKey: "trainer_pokedex_id",
+// });
 // ------
 
 // ------
