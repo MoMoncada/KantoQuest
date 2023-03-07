@@ -1,21 +1,23 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
-const { Pokedex, Pokemon, Trainer, TrainerParty, TrainerPokedex }= require('../../models');
+const { Pokedex, Trainer, TrainerParty, TrainerPokedex }= require('../../models');
 const { request } = require('express');
 
 //-- GET req for all parties --//
-router.get('/', withAuth, async (requ, res) => {
+router.get('/', withAuth, async (req, res) => {
     
     console.log('GET for all trainer parties is working :)');
 
     try {
         //TODO: uncomment this if needed, check attributes being passed before testing
         // const trainerPartyData = await TrainerParty.findAll({
-        //   attributes: ['id', 'party_score', 'trainer_id','trainer_pokedex_id],
-        //   include: []  
+        //  include: [
+        //     {model: TrainerParty}
+
+        //  ] 
         // });
-        // res.json(trainerPartyData);
+        res.json(trainerPartyData);
     } catch (err) {
         console.error(err);
         res.status(500).json(err);

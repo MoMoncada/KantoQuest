@@ -1,21 +1,19 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
 const { Pokedex, Trainer, TrainerParty, TrainerPokedex } = require('../models');
 const withAuth = require('../utils/auth');
 
 //-- GET req to the '/' endpoint --//
 router.get('/', withAuth, async (req, res) => {
     
-    console.log('GET req is working');
+    console.log('GET Dashboard req is working');
 
     try {
-       res.render('dashboard', {
-        //TODO: code here
-       });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+        res.render("dashboard", {
+          logged_in: req.session.logged_in,
+        });
+      } catch (err) {
+        res.status(500).json({ message: 'This is the error I want' });
+      }
 });
 
 

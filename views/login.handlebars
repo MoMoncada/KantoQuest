@@ -1,47 +1,67 @@
-<section>
-  {{! For the background }}
-  <img src="/images/background-image.jpg" alt="Background Image" />
-  <div>
+<style>
+  main {
+    background-image: url(assets/Pokemon-background-2.jpg);
+    background-size: cover;
+    background-position:center;
+    width: 100%;
+    min-height: 100vh;
+  }
+  .login {
+    background-color: rgba(0, 0, 0, 0.562);
+    border-radius: 10px;
+  }
+  .custom-font-size {
+    font-size: 16px;
+  }
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="row">
+  <div class="col s12 m12 l4 offset-l1 login">
     {{! Login form }}
-    <h2>Login:</h2>
+    <h2 class="white-text">Login:</h2>
     <form class="login-form">
       <div>
-        <label for="email-login">Email:</label>
-        <input type="text" id="email-login" />
+        <label class="white-text custom-font-size " for="email-login">Email:</label>
+        <input class="white-text" type="text" id="email-login" />
       </div>
       <div>
-        <label for="password-login">Password:</label>
-        <input type="password" id="password-login" />
+        <label class="white-text custom-font-size" for="password-login">Password:</label>
+        <input class="white-text" type="password" id="password-login" />
       </div>
       <div>
-        <button class="button" type="submit">Login!</button>
+        <button class="btn red white-text" type="submit">Login!</button>
       </div>
     </form>
   </div>
 
-  <div>
+  <div class="col s12 m12 l4 offset-l1 login">
     {{! SIgnup form }}
-    <h2>Signup:</h2>
+    <h2 class="white-text">Signup:</h2>
     <form class="signup-form">
       <div>
-        <label for="user-signup">Username:</label>
-        <input type="text" id="user-signup" />
+        <label class="white-text custom-font-size" for="user-signup">Username:</label>
+        <input class="white-text" type="text" id="user-signup" />
       </div>
       <div>
-        <label for="email-signup">Email:</label>
-        <input type="text" id="email-signup" />
+        <label class="white-text custom-font-size" for="email-signup">Email:</label>
+        <input class="white-text" type="text" id="email-signup" />
       </div>
       <div>
-        <label for="password-signup">Password:</label>
-        <input type="password" id="password-signup" />
+        <label class="white-text custom-font-size" for="password-signup">Password:</label>
+        <input class="white-text" type="password" id="password-signup" />
       </div>
       <div>
-        <button class="button" type="submit">Sign up!</button>
+        <button class="btn red white-text" type="submit">Sign up!</button>
       </div>
     </form>
   </div>
 
 </section>
 
-{{! Add script when created }}
-{{! <script src="/js/login.js"></script> }}
+<script src="/js/login.js"></script>
