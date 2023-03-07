@@ -83,7 +83,7 @@
 // }
 
 const Pdex = require("Pokedex-promise-v2");
-const { Pokedex } = require("../models");
+const Pokemon = require("../models/Pokemon");
 
 const P = new Pdex();
 
@@ -126,7 +126,7 @@ async function seedPokemon() {
       return pokemonArray;
     })
     .then((pokemonArray) => {
-      Pokedex.bulkCreate(pokemonArray);
+      Pokemon.bulkCreate(pokemonArray);
     //   console.log(pokemonArray);
     });
 }
