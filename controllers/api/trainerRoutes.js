@@ -71,8 +71,6 @@ router.get('/:id', withAuth, async (req, res) => {
 
 //--- POST route for the /login endpoint ---//
 
-//FIXME: this is logging in the console as being inserted into the session table, but 400 error with Insomnia
-=======
 router.post('/login', async (req, res) => {
 
     console.log('Im working!');
@@ -81,10 +79,10 @@ router.post('/login', async (req, res) => {
       const dbTrainerData = await Trainer.findOne({
         where: {
           email: req.body.email,
-          password: req.body.password
         }
       });
       if (!dbTrainerData) {
+        // TODO: Change message to be "Incorrect email or password" after testing for security
         res.status(400).json({ message: 'No trainer with that email address!' });
         return;
       }
@@ -92,6 +90,7 @@ router.post('/login', async (req, res) => {
       const validPassword = dbTrainerData.checkPassword(req.body.password);
   
       if (!validPassword) {
+        // TODO: Change message to be "Incorrect email or password" after testing for security
         res.status(400).json({ message: 'Incorrect password!' });
         return;
       }
