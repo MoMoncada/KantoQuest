@@ -70,7 +70,6 @@ router.get('/:id', withAuth, async (req, res) => {
 
 
 //--- POST route for the /login endpoint ---//
-
 router.post('/login', async (req, res) => {
 
     console.log('Im working!');
@@ -82,15 +81,13 @@ router.post('/login', async (req, res) => {
         }
       });
       if (!dbTrainerData) {
-        // TODO: Change message to be "Incorrect email or password" after testing for security
-        res.status(400).json({ message: 'No trainer with that email address!' });
+        res.status(400).json({ message: 'Incorrect email or password' });
         return;
       }
   
       const validPassword = dbTrainerData.checkPassword(req.body.password);
   
       if (!validPassword) {
-        // TODO: Change message to be "Incorrect email or password" after testing for security
         res.status(400).json({ message: 'Incorrect password!' });
         return;
       }
@@ -111,17 +108,16 @@ router.post('/login', async (req, res) => {
 
 
 //--- POST route for the /logout endpoint ---//
-//TODO: Didn't work on this one as login didn't work properly
-// router.post('/logout', (req, res) => {
-//     if (req.session.loggedIn) {
-//       req.session.destroy(() => {
-//         res.status(204).end();
-//       });
-//     }
-//     else {
-//       res.status(404).end();
-//     }
-//   });
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    }
+    else {
+      res.status(404).end();
+    }
+  });
 
 
 
