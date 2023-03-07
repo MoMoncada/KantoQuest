@@ -8,16 +8,11 @@ router.get('/', withAuth, async (req, res) => {
     console.log('GET Dashboard req is working');
 
     try {
-        const userData = await Trainer.findByPk(req.session.user_id, {
-          attributes: { exclude: ["password"] },
-        });
-        const user = userData.get({ plain: true });
         res.render("dashboard", {
-          ...user,
-          loggedIn: req.session.logged_in,
+          logged_in: req.session.logged_in,
         });
       } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json({ message: 'This is the error I want' });
       }
 });
 

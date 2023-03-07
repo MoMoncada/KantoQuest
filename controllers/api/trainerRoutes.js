@@ -54,9 +54,8 @@ router.get('/:id', withAuth, async (req, res) => {
         password: req.body.password
       });
       req.session.save(() => {
-        req.session.id = newTrainerData.id;
-        req.session.username = newTrainerData.username;
-        req.session.loggedIn = true;
+        req.session.user_id = newTrainerData.id;
+        req.session.logged_in = true;
   
         res.json(newTrainerData);
 
@@ -93,9 +92,9 @@ router.post('/login', async (req, res) => {
       }
   
       req.session.save(() => {
-        req.session.id = dbTrainerData.id;
+        req.session.user_id = dbTrainerData.id;
         req.session.username = dbTrainerData.username;
-        req.session.loggedIn = true;
+        req.session.logged_in = true;
   
         res.json({ trainer: dbTrainerData, message: 'You are now logged in!' });
       });
@@ -109,7 +108,7 @@ router.post('/login', async (req, res) => {
 
 //--- POST route for the /logout endpoint ---//
 router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
       req.session.destroy(() => {
         res.status(204).end();
       });
