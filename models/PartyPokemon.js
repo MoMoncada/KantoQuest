@@ -1,15 +1,15 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-// This is the party of pokemon the trainer selects
+// This is the pokedex of the Trainer
 // Belongs to the Trainer
 // Has many Pokemon through Trainer Pokemon
 
-class Party extends Model {
+class PartyPokemon extends Model {
   // Methods
 }
 
-Party.init(
+PartyPokemon.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -17,31 +17,28 @@ Party.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    party_score: {
-      type: DataTypes.INTEGER,
-    },
-    trainer_id: {
+    pokedex_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "trainer",
         key: "id",
       },
+    },    
+    trainerparty_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "pokedex",
+        key: "id",
+      }
     },
-    // trainer_pokedex_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "trainer_pokedex",
-    //     key: "id",
-    //   },
-    // },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "trainer_party",
+    modelName: "trainer_pokedex",
   }
 );
 
-module.exports = Party;
+module.exports = PartyPokemon;

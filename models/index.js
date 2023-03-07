@@ -2,6 +2,7 @@ const Pokedex = require("./Pokedex");
 const Trainer = require("./Trainer");
 const TrainerParty = require("./TrainerParty");
 const TrainerPokedex = require("./TrainerPokedex");
+const PartyPokemon = require("./PartyPokemon")
 
 
 //Trainers - Pokemon
@@ -9,7 +10,7 @@ Trainer.belongsToMany(Pokedex, {
   through: TrainerPokedex
 })
 
-Pokemon.belongsToMany(Trainer, {
+Pokedex.belongsToMany(Trainer, {
   through: TrainerPokedex
 })
 
@@ -46,38 +47,38 @@ Pokedex.belongsToMany(TrainerParty, {
 
 // ------
 // TrainerPokedex has many TrainerParty
-TrainerPokedex.hasMany(TrainerParty, {
-  foreignKey: "trainer_pokedex_id",
-});
+// TrainerPokedex.hasMany(TrainerParty, {
+//   foreignKey: "trainer_pokedex_id",
+// });
 
-// TrainerParty belongs to TrainerPokedex
-TrainerParty.belongsTo(TrainerPokedex, {
-  foreignKey: "trainer_pokedex_id",
-});
+// // TrainerParty belongs to TrainerPokedex
+// TrainerParty.belongsTo(TrainerPokedex, {
+//   foreignKey: "trainer_pokedex_id",
+// });
 // ------
 
 // ------
 // Trainer has one Trainer Pokedex
-Trainer.hasOne(TrainerPokedex, {
-  foreignKey: "trainer_id",
-});
+// Trainer.hasOne(TrainerPokedex, {
+//   foreignKey: "trainer_id",
+// });
 
-// TrainerPokedex belongs to Trainer
-TrainerPokedex.belongsTo(Trainer, {
-    foreignKey: "trainer_id",
-  });
-// ------
+// // TrainerPokedex belongs to Trainer
+// TrainerPokedex.belongsTo(Trainer, {
+//     foreignKey: "trainer_id",
+//   });
+// // ------
 
-// ------
-// Trainer can have many TrainerParties
-Trainer.hasMany(TrainerParty, {
-  foreignKey: "trainer_id",
-});
+// // ------
+// // Trainer can have many TrainerParties
+// Trainer.hasMany(TrainerParty, {
+//   foreignKey: "trainer_id",
+// });
 
-// TrainerParty belongs to Trainer
-TrainerParty.belongsTo(Trainer, {
-  foreignKey: "trainer_id",
-});
+// // TrainerParty belongs to Trainer
+// TrainerParty.belongsTo(Trainer, {
+//   foreignKey: "trainer_id",
+// });
 // ------
 
 module.exports = {
@@ -85,4 +86,5 @@ module.exports = {
   Trainer,
   TrainerParty,
   TrainerPokedex,
+  PartyPokemon
 };
