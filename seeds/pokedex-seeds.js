@@ -1,4 +1,4 @@
-const { TrainerPokedex } = require('../models');
+const { Pokedex } = require('../models');
 
 const trainerPokedexData = [
     {
@@ -23,6 +23,6 @@ const trainerPokedexData = [
     },
 ];
 
-const seedTrainerPokedexData = () => TrainerPokedex.bulkCreate(trainerPokedexData);
+const seedTrainerPokedexData = () => Pokedex.bulkCreate(trainerPokedexData);
 
 module.exports = seedTrainerPokedexData;

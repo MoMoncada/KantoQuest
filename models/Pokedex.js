@@ -5,11 +5,11 @@ const sequelize = require("../config/connection");
 // Belongs to the Trainer
 // Has many Pokemon through Trainer Pokemon
 
-class TrainerPokedex extends Model {
+class Pokedex extends Model {
   // Methods
 }
 
-TrainerPokedex.init(
+Pokedex.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -24,10 +24,10 @@ TrainerPokedex.init(
         key: "id",
       },
     },    
-    pokedex_id: {
+    pokemon_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "pokedex",
+        model: "pokemon",
         key: "id",
       }
     },
@@ -37,7 +37,7 @@ TrainerPokedex.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "trainer_pokedex",
+    modelName: "pokedex",
   }
 );
 

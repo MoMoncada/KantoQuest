@@ -17,17 +17,17 @@ PartyPokemon.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    pokedex_id: {
+    pokemon_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "trainer",
+        model: "pokemon",
         key: "id",
       },
     },    
     trainerparty_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "pokedex",
+        model: "trainer_party",
         key: "id",
       }
     },
@@ -37,7 +37,7 @@ PartyPokemon.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "trainer_pokedex",
+    modelName: "party_pokemon",
   }
 );
 

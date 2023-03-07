@@ -1,7 +1,7 @@
 const Pokedex = require("./Pokemon");
 const Trainer = require("./Trainer");
 const TrainerParty = require("./TrainerParty");
-const TrainerPokedex = require("./TrainerPokedex");
+const TrainerPokedex = require("./Pokedex");
 const PartyPokemon = require("./PartyPokemon")
 
 
