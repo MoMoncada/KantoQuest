@@ -5,11 +5,11 @@ const sequelize = require("../config/connection");
 // Belongs to the Trainer
 // Has many Pokemon through Trainer Pokemon
 
-class Party extends Model {
+class TrainerParty extends Model {
   // Methods
 }
 
-Party.init(
+TrainerParty.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -44,4 +44,4 @@ Party.init(
   }
 );
 
-module.exports = Party;
+module.exports = TrainerParty;

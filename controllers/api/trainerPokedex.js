@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
-const { Pokedex, Pokemon, Trainer, TrainerParty, TrainerPokedex }= require('../../models');
+const { Pokedex, Trainer, TrainerParty, TrainerPokedex }= require('../../models');
 const { request } = require('express');
 
 
