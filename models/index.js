@@ -13,6 +13,15 @@ Pokemon.belongsToMany(Trainer, {
   through: TrainerPokedex
 })
 
+// Trainer - Party
+Trainer.hasOne(TrainerParty, {
+  foreignKey: 'trainer_id',
+  onDelete: 'CASCADE'
+})
+
+TrainerParty.belongsTo(Trainer, {
+  foreignKey: 'trainer_id'
+})
 // ------
 // TrainerPokedex has many Pokemon
 // TrainerPokedex.hasMany(Pokedex, {
