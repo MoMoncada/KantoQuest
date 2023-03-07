@@ -41,4 +41,4 @@ Pokedex.init(
   }
 );
 
-module.exports = TrainerPokedex;
+module.exports = Pokedex;

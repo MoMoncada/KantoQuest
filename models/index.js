@@ -1,17 +1,17 @@
-const Pokedex = require("./Pokemon");
+const Pokedex = require("./Pokedex");
 const Trainer = require("./Trainer");
 const TrainerParty = require("./TrainerParty");
-const TrainerPokedex = require("./Pokedex");
-const PartyPokemon = require("./PartyPokemon")
+const PartyPokemon = require("./PartyPokemon");
+const Pokemon = require("./Pokemon");
 
 
 //Trainers - Pokemon
-Trainer.belongsToMany(Pokedex, {
-  through: TrainerPokedex
+Trainer.belongsToMany(Pokemon, {
+  through: Pokedex
 })
 
-Pokedex.belongsToMany(Trainer, {
-  through: TrainerPokedex
+Pokemon.belongsToMany(Trainer, {
+  through: Pokedex
 })
 
 // Trainer - Party
@@ -25,11 +25,11 @@ TrainerParty.belongsTo(Trainer, {
 })
 
 // Party - Pokemon
-TrainerParty.belongsToMany(Pokedex, {
+TrainerParty.belongsToMany(Pokemon, {
   through: PartyPokemon
 })
 
-Pokedex.belongsToMany(TrainerParty, {
+Pokemon.belongsToMany(TrainerParty, {
   through: PartyPokemon
 })
 
@@ -86,5 +86,6 @@ module.exports = {
   Trainer,
   TrainerParty,
   TrainerPokedex,
-  PartyPokemon
+  PartyPokemon,
+  Pokemon
 };
