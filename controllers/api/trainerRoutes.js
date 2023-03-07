@@ -64,7 +64,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
     } catch (err) {
       console.log(err);
-      res.status(500).json(err);
+      res.status(500).json({ message: 'Error for new acc' });
     }
   });
 
@@ -104,7 +104,7 @@ router.post('/login', async (req, res) => {
       });
     } catch (err) {
       console.log(err);
-      res.status(500).json(err);
+      res.status(500).json({ message: 'Error for existing acc' });
     }
   });
 

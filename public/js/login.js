@@ -14,7 +14,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful go to profile page
-      document.location.replace("/profile");
+      document.location.replace("/dashboard");
     } else {
       alert(response.statusText);
     }
@@ -36,7 +36,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/profile");
+      document.location.replace("/dashboard");
     } else {
       alert(response.statusText);
     }
