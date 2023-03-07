@@ -22,6 +22,16 @@ Trainer.hasOne(TrainerParty, {
 TrainerParty.belongsTo(Trainer, {
   foreignKey: 'trainer_id'
 })
+
+// Party - Pokemon
+TrainerParty.belongsToMany(Pokedex, {
+  through: PartyPokemon
+})
+
+Pokedex.belongsToMany(TrainerParty, {
+  through: PartyPokemon
+})
+
 // ------
 // TrainerPokedex has many Pokemon
 // TrainerPokedex.hasMany(Pokedex, {
