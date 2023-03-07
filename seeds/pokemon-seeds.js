@@ -43,11 +43,12 @@ async function seedPokemon() {
       return pokemonArray;
     })
     .then((pokemonArray) => {
+      console.log(pokemonArray);
       Pokemon.bulkCreate(pokemonArray, {
         individualHooks: true,
         returning: true,
       });
-    //   console.log(pokemonArray);
+     
     });
 }
 
