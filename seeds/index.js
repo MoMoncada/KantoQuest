@@ -9,13 +9,13 @@ const {
 
 const trainerData = require("./userTestData.json");
 const seedPokemon = require("./pokemon-seeds");
-const seedParty = require("./party-pokemon-seeds")
+// const seedParty = require("./party-pokemon-seeds")
 const seedPokedex = require("./pokedex-seeds")
 
 
 
 const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: false });
 
   // Working
   const trainers = await Trainer.bulkCreate(trainerData, {
@@ -24,9 +24,15 @@ const seedDatabase = async () => {
   });
 
   // Working
-  const pokemon = await seedPokemon();
-  const pokedex = await seedPokedex();
-  const party = await seedParty();
+ 
+
+  await seedPokemon().then(async () => { await seedPokedex() })
+  // pokemon.then
+  // const pokedex = await seedPokedex();
+
+
+
+  // const party = await seedParty();
 
   process.exit(0);
 };

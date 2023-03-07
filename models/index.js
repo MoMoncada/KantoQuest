@@ -1,7 +1,7 @@
 const Pokedex = require("./Pokedex");
 const Trainer = require("./Trainer");
-const TrainerParty = require("./TrainerParty");
-const PartyPokemon = require("./PartyPokemon");
+// const TrainerParty = require("./TrainerParty");
+// const PartyPokemon = require("./PartyPokemon");
 const Pokemon = require("./Pokemon");
 
 
@@ -15,23 +15,23 @@ Pokemon.belongsToMany(Trainer, {
 })
 
 // Trainer - Party
-Trainer.hasOne(TrainerParty, {
-  foreignKey: 'trainer_id',
-  onDelete: 'CASCADE'
-})
+// Trainer.hasOne(TrainerParty, {
+//   foreignKey: 'trainer_id',
+//   onDelete: 'CASCADE'
+// })
 
-TrainerParty.belongsTo(Trainer, {
-  foreignKey: 'trainer_id'
-})
+// TrainerParty.belongsTo(Trainer, {
+//   foreignKey: 'trainer_id'
+// })
 
-// Party - Pokemon
-TrainerParty.belongsToMany(Pokemon, {
-  through: PartyPokemon
-})
+// // Party - Pokemon
+// TrainerParty.belongsToMany(Pokemon, {
+//   through: PartyPokemon
+// })
 
-Pokemon.belongsToMany(TrainerParty, {
-  through: PartyPokemon
-})
+// Pokemon.belongsToMany(TrainerParty, {
+//   through: PartyPokemon
+// })
 
 // ------
 // TrainerPokedex has many Pokemon
@@ -84,8 +84,7 @@ Pokemon.belongsToMany(TrainerParty, {
 module.exports = {
   Pokedex,
   Trainer,
-  TrainerParty,
-  TrainerPokedex,
-  PartyPokemon,
+  // TrainerParty,
+  // PartyPokemon,
   Pokemon
 };

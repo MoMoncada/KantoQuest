@@ -31,6 +31,10 @@ Pokedex.init(
         key: "id",
       }
     },
+    isInParty: {
+      type: DataTypes.BOOLEAN,
+      default: false
+    }
   },
   {
     sequelize,

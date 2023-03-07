@@ -23,6 +23,9 @@ const pokedexData = [
     },
 ];
 
-const seedPokedexData = () => Pokedex.bulkCreate(pokedexData);
+const seedPokedexData = () => Pokedex.bulkCreate(pokedexData, {
+    individualHooks: true,
+    returning: true,
+  });
 
 module.exports = seedPokedexData;
