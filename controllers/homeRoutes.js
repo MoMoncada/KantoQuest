@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 //--- GET request for the login page ---//
 router.get("/login", (req, res) => {
   console.log("GET req for login is working");
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect("/dashboard");
     return;
   }
