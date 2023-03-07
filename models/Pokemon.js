@@ -4,12 +4,12 @@ const sequelize = require("../config/connection");
 // This is a Pokemon from the api
 // Belongs to the Pokedex
 
-class Pokedex extends Model {
+class Pokemon extends Model {
   // Pokemon Methods
 }
 
 // init pokemon sequelize object
-Pokedex.init(
+Pokemon.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -33,25 +33,25 @@ Pokedex.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    is_caught: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-    trainer_pokedex_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "trainer_pokedex",
-        key: "id",
-      },
-    },
+    // is_caught: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false,
+    // },
+    // trainer_pokedex_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "trainer_pokedex",
+    //     key: "id",
+    //   },
+    // },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "pokedex",
+    modelName: "pokemon",
   }
 );
 
-module.exports = Pokedex;
+module.exports = Pokemon;

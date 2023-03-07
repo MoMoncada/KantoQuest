@@ -6,20 +6,20 @@ const trainerPokedexData = [
         pokedex_id: 2
     },
     {
-        trainer_id: 3,
+        trainer_id: 1,
         pokedex_id: 5
     },
     {
-        trainer_id: 3,
+        trainer_id: 1,
         pokedex_id: 4
     },
     {
-        trainer_id: 2,
+        trainer_id: 1,
         pokedex_id: 1
     },
     {
         trainer_id: 1,
-        pokedex_id:3
+        pokedex_id: 3
     },
 ];
 
