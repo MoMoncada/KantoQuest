@@ -1,22 +1,134 @@
-<section>
-  {{! User Pokedex info on the left }}
-  <div>
-    <h3>User Pokedex</h3>
-    <p>Edit Party</p>
-    {{! Pokemon sprites }}
-    <img />
-    <img />
-    <img />
-    <img />
-    <img />
-    <img />
-  </div>
+<main>
+  <section>
+    <div class="row">
+      {{!-- FIXME: I want to center the entire card in the middle of the left side of the screen --}}
+          {{! User Pokedex info on the left }}
+    <div class="col s12 m6 l6 xl6">
+      <div class="card rounded">
+        <h3 class="card-title"><a href="#">User Pokedex</a></h3>
 
-  {{! Buttons and Highscore for current party }}
-  <div>
-    <button>Select a Pokemon to Battle</button>
-    <button>Battle a wild Pokemon</button>
-    <p>Your parties highest score: 4</p>
-  </div>
+        <div class="card-content">
+          <p><a class= "edit-a" href="#">Edit Party</a></p>
 
-</section>
+          <div class="row">
+            
+            <div class="col s4">
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png">
+                </div>
+              </div>
+            </div>
+
+            <div class="col s4">
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png">
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
+                </div>
+              </div>
+            </div>
+
+            <div class="col s4">
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png">
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <p>Your highest score is: 4</p>
+      </div>
+    </div>
+
+          {{! Buttons and Highscore for current party }}
+          {{!-- FIXME: I want to center the button in the middle of the right side of the screen --}}
+          <div class = "row">
+          <div class="col s6 valign-wrapper">
+            <div class="card rounded w-50">
+              <div class="card-content">
+                <button class="btn red">Battle a wild Pokemon</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+</main>
+
+<style>
+  main {
+    background-image: url(assets/pokeball_background.jpg);
+    background-size: cover;
+    background-position:center;
+    width: 100%;
+    min-height: 100vh;
+  }
+  .card {
+    background-color: rgba(255, 255, 255, 0.39);
+    border-radius: 10px;
+    border-bottom: 3px rgb(139, 19, 19) solid;
+  }
+
+  .card .card-image img {
+    width: 50%;
+  }
+
+  .card-title {
+    color: #8b1313;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 10px;
+  }
+
+  .card-title a {
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+ 
+  button.btn.red {
+    background-color: #8b1313;
+  }
+  button.btn.red:hover {
+    background-color: #a61717;
+  }
+  p {
+    font-size: 15px;
+    color: #8b1313;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+  }
+  a {
+    color: #8b1313;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
