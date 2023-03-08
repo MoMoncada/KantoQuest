@@ -41,6 +41,10 @@ Trainer.init(
         len: [8],
       },
     },
+    total_score: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   },
   {
     hooks: {
