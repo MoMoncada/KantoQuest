@@ -1,7 +1,14 @@
+<style>
+  main {
+    background-image: url(assets/pokedex-background.jpg);
+  }
+</style>
+
 {{!-- Center of Page --}}
-<section>
+<section class="container row">
+  <div class="col s12">
     {{!-- Search Bar --}}
-    <div>
+    <div class="card">
       <label for="pokedex-search">Search:</label>
       <input type="text" id="pokedex-search"/>
     </div>
@@ -9,4 +16,5 @@
     {{!-- An Individual Pokemons Pokedex Info--}}
       {{> pokedex-entry}}
     {{/each}}
+    </div>
 </section>
