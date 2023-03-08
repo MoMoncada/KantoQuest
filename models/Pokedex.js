@@ -1,9 +1,9 @@
+// If using the many to many PokemonPokedex file
+// Adjustments are needed based on the comments
+
+
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-
-// This is the pokedex of the Trainer
-// Belongs to the Trainer
-// Has many Pokemon through Trainer Pokemon
 
 class Pokedex extends Model {
   // Methods
@@ -23,7 +23,8 @@ Pokedex.init(
         model: "trainer",
         key: "id",
       },
-    },    
+    },
+    // Don't need this with the many to many file 
     pokemon_id: {
       type: DataTypes.INTEGER,
       references: {

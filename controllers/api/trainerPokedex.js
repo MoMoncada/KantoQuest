@@ -1,18 +1,34 @@
 const router = require('express').Router();
-const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
-const { Pokedex, Trainer, TrainerParty, TrainerPokedex }= require('../../models');
-const { request } = require('express');
+const { Pokedex, Trainer, Pokemon }= require('../../models');
+
+// --- Post Route for adding a pokemon to the trainerPokedex
+router.post("/", async (req, res) => {
+    console.log("Post Route for adding a pokemon!");
+    try {
+        const newPokemonData = await Pokedex.create({
+            trainer_id: req.body.trainer_id,
+            pokemon_id: req.body.pokemon_id
+        });
+        res.status(200).json(newPokemonData);
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 
 //-- GET req for all trainer pokedex --//
-router.get('/', withAuth, async (req, res) => {
-    console.log('All Trainer Pokedexes here');
+// TODO: Doesn't work, pokemon data isnt shown, seems new table in being created?????
+router.get('/', async (req, res) => {
+    console.log('Every Trainers Pokemon here');
     try {
-        //TODO: uncomment when needed
-        // const trainerPokedexes = await TrainerPokedex.findAll();
-        // res.statusCode(200).json(trainerPokedexes);
+        const PokemonData = await Pokedex.findAll({
+            include: Trainer,
+            include: Pokemon,
+        })
+        res.status(200).json(PokemonData);
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });
