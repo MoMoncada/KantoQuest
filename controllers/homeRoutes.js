@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Pokedex, Trainer, TrainerParty, TrainerPokedex } = require("../models");
+const {  } = require("../models");
 
 //-- GET request for the homepage --//
 router.get("/", async (req, res) => {
@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
 
   try {
     res.render("homepage", {
-      //TODO: code here
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);

@@ -20,7 +20,11 @@
           </ul>
           <ul class="right">
             <li><a href="/pokedex">Pokedex</a></li>
+            {{#if logged_in}}
+            <li><a href="/" id="logout">Logout</a></button>
+            {{else}}
             <li><a href="/login">Sign-up</a></button>
+            {{/if}}
             <li><a href="https://github.com/RyanMcd29/pokemon-battle/" target="_blank">Our GitHub</a></li>
           </ul>
       </div>
@@ -32,8 +36,9 @@
       {{{body}}}
     </main>
 
-    {{! <!-- Scripts --> }}
-    {{! <script src="/js/scripts.js"></script> }}
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 
   </body>
 </html>
