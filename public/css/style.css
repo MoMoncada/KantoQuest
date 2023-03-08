@@ -1,4 +1,37 @@
+h3 {
+	color: white
+	;
+}
 
+.party-pokemon {
+	background-color: rgb(53, 53, 53);
+	height: 150px;
+	width: 150px;
+	margin: 10px;
+	border-radius: 5px;
+	border: white;
+
+}
+
+.pokedex-container{
+	padding-top: 50px;
+	height: 800px;
+	background-color: rgb(24, 24, 24);
+	padding: 20px;
+}
+
+.background{
+	padding-top: 200px;
+	height: 100vh;
+}
+
+
+#trainer-pokedex{
+	height: 600px;
+	overflow-y: auto;
+	padding: 20px;
+
+}
 /* CSS for Pokedex Types */
 .pkn-type {
     color: white;
@@ -151,9 +184,8 @@
 }
 .dark:after {
 	content: 'Dark';
-
-	content: 'Dar';
 }
+
 .steel {
 	background-color: #B8B8D0;
 	border-color: #787887;
