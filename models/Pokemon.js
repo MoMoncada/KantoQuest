@@ -15,7 +15,7 @@ Pokemon.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: false,
     },
     name: {
       type: DataTypes.STRING,
@@ -33,17 +33,6 @@ Pokemon.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // is_caught: {
-    //   type: DataTypes.BOOLEAN,
-    //   defaultValue: false,
-    // },
-    // trainer_pokedex_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "trainer_pokedex",
-    //     key: "id",
-    //   },
-    // },
   },
   {
     sequelize,

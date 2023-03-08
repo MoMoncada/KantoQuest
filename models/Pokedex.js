@@ -31,9 +31,9 @@ Pokedex.init(
         key: "id",
       }
     },
-    isInParty: {
+    is_in_party: {
       type: DataTypes.BOOLEAN,
-      default: false
+      defaultValue: false
     }
   },
   {
