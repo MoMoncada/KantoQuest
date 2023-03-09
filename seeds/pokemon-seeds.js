@@ -6,7 +6,7 @@ async function seedPokemon() {
   const pokemonData = [];
   // create pokemonData array
   // TODO: Reduced to 25, Change when no more testing is needed
-  for (let i = 1; i <= 25; i++) {
+  for (let i = 1; i <= 55; i++) {
     pokemonData.push(P.getPokemonByName(i));
   }
   return Promise.all(pokemonData)
