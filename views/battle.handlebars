@@ -1,29 +1,93 @@
-<section>
-    {{!-- Users Party on the left --}}
-    <div>
-        <h3>My Party</h3>
-        <img>
-        <img>
-        <img>
-        <img>
-        <img>
-        <img>
-    </div>
-    {{!-- Middle of screen User pokemon vs CPU pokemon --}}
-    <div>
-        {{!-- User Pokemon --}}
-        <div>
-            <p>Your Battling Pokemon</p>
-            <img>
+<style>
+  section {
+    background-image: url(assets/battle-background.jpg);
+    background-size: cover;
+    background-position:center;
+    width: 100%;
+    min-height: 100vh;
+  }
+    .pokemon-card {
+    background-color: rgba(255, 255, 255, 0.39);
+    border-radius: 10px;
+    border-bottom: 5px rgb(139, 19, 19) solid;///
+  }
+
+  .other-card {
+    background-color: rgba(255, 255, 255, 0.39);
+    border-radius: 10px;
+  }
+    .evil-card {
+    background-color: rgba(253, 7, 7, 0.39);
+    border-radius: 10px;
+  }
+      .dark-card {
+    background-color: rgba(0, 0, 0, 0.39);
+    border-radius: 10px;
+  }
+</style>
+
+<section class="row">
+    <div class="col s12">
+        <br>
+        <br>
+        <div class="col s2 offset-s1 other-card center z-depth-5">
+            <div class="">
+                <h3 class="card-title ">My Party</h3>
+            </div>
+        <div class="pokemon-card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
         </div>
-        {{!-- CPU Pokemon --}}
-        <div>
-            <p>Wild Pokemon</p>
-            <img>
+        <div class="pokemon-card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
         </div>
-    </div>
-    {{!-- Battle Button --}}
-    <div>
-        <button>Battle!</button>
+        <div class="pokemon-card">
+           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png">
+        </div>
+        <div class="pokemon-card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png">
+        </div>
+        <div class="pokemon-card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png">
+        </div>
+        <div class="pokemon-card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png">
+        </div>
+        <br>
+        </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        <div class="col s3 offset-s1 other-card center z-depth-5">
+            <h4>Your Pokemon</h4>
+            <img class="pokemon-card" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
+            <div class="dark-card">
+                <p class="white-text">Pokemon Name</p>
+                <p class="white-text">Type 1 Type 2</p>
+            </div>
+        </div>
+
+        <div class="col s1">
+            <br>
+            <br>
+            <h1 class="other-card red-text z-depth-5">VS</h1>
+        </div>
+
+        <div class="col s3 evil-card center z-depth-5">
+            <h4>Wild Pokemon</h4>
+            <img class="pokemon-card" width="150" height="150" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png">
+            <div class="dark-card">
+                <p class="white-text">Pokemon Name</p>
+                <p class="white-text">Type 1 Type 2</p>
+            </div>
+        </div>
+
+        <div class="col s9 center">
+            <br>
+            <button class="btn red white-text z-depth-5">Battle!</button>
+        </div>
     </div>
 </section>
