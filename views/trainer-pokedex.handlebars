@@ -1,0 +1,38 @@
+<style>
+  main {
+    background-image: url(assets/pokedex-background.jpg);
+  }
+</style>
+
+{{!-- Center of Page --}}
+<section class="background">
+    <section class="container row col s6 pokedex-container">
+        <section class="col s3" id="party-box">
+            <h3>Your Party</h3>
+            
+            <div class="row">
+                <div class="col s5 z-depth-3 party-pokemon"></div>
+                <div class="col s5 z-depth-3 party-pokemon"></div>
+                <div class="col s5 z-depth-3 party-pokemon"></div>
+                <div class="col s5 z-depth-3 party-pokemon"></div>
+                <div class="col s5 z-depth-3 party-pokemon"></div>
+                <div class="col s5 z-depth-3 party-pokemon"></div>
+            </div>
+        </section>
+        
+        <div class="col s9" id="pokedex">
+            {{!-- Search Bar --}}
+            <div class="card">
+                <label for="pokedex-search">Search:</label>
+                <input type="text" id="pokedex-search"/>
+            </div>
+            <div id="trainer-pokedex">
+                {{#each pokemons as |pokemon|}}
+                {{!-- An Individual Pokemons Pokedex Info--}}
+                {{> trainer-pokedex-entry}}
+                {{/each}}
+            </div>
+            
+        </div>
+    </section>
+</section>

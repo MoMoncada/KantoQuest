@@ -12,6 +12,7 @@ Pokemon.belongsToMany(Trainer, {
   foreignKey: "pokemon_id"
 })
 
+
 module.exports = {
   Trainer,
   Pokemon,
