@@ -1,31 +1,19 @@
-const Pokedex = require("./Pokedex");
 const Trainer = require("./Trainer");
 const Pokemon = require("./Pokemon");
-// Might need this for the many to many relationship?
-// const PokemonPokedex = require("./PokemonPokedex");
+const TrainerPokemon = require("./TrainerPokemon");
 
-// I think we need this
-// Trainer.hasMany(Pokedex, {
-//   foreignKey: "trainer_id"
-// })
-
-// Pokedex.belongsToMany(Trainer, {
-//   foreignKey: "trainer_id"
-// })
-
-
-//Trainers - Pokemon
-// I think this doesn't work
 Trainer.belongsToMany(Pokemon, {
-  through: Pokedex
+  through: TrainerPokemon,
+  foreignKey: "trainer_id"
 })
 
 Pokemon.belongsToMany(Trainer, {
-  through: Pokedex
+  through: TrainerPokemon,
+  foreignKey: "pokemon_id"
 })
 
 module.exports = {
-  Pokedex,
   Trainer,
-  Pokemon
+  Pokemon,
+  TrainerPokemon
 };

@@ -2,9 +2,8 @@ const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
-// This is an individual user account (Trainer)
-// Has one TrainerPokedex
-// Has many TrainerParty
+// This is the Trainer a user creates
+// Belongs to many Pokemon through PokemonTrainer
 
 class Trainer extends Model {
   // Trainer Methods

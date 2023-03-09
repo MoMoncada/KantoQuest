@@ -1,15 +1,11 @@
-// If using the many to many PokemonPokedex file
-// Adjustments are needed based on the comments
-
-
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Pokedex extends Model {
-  // Methods
-}
+// This is the joining table to link the many Trainers to many Pokemon
 
-Pokedex.init(
+class TrainerPokemon extends Model {}
+
+TrainerPokemon.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -22,14 +18,15 @@ Pokedex.init(
       references: {
         model: "trainer",
         key: "id",
+        unique: false,
       },
     },
-    // Don't need this with the many to many file 
     pokemon_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "pokemon",
         key: "id",
+        unique: false,
       }
     },
     is_in_party: {
@@ -42,8 +39,8 @@ Pokedex.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "pokedex",
+    modelName: "trainer_pokemon",
   }
 );
 
-module.exports = Pokedex;
+module.exports = TrainerPokemon;
