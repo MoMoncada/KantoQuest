@@ -59,19 +59,46 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+//-- PUT request to update trainer/s party --//
+router.put('/:id', async (req, res) => {
+    console.log(`PUT route for updating TrainerPokemon is working!`);
+    try {
+      const trainerPokemon = await TrainerPokemon.findOne({
+        where: {
+        trainer_id: req.body.trainer_id,
+        pokemon_id: req.body.pokemon_id
+    }
+      });
+  
+      if (!trainerPokemon) {
+        return res.status(404).json({ message: 'This Pokemon is not in your party!' });
+      }
+  
+      trainerPokemon.is_in_party = !trainerPokemon.is_in_party; // Toggle is_in_party property
+      await trainerPokemon.save();
+  
+      return res.status(200).json(trainerPokemon);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Unable to update Party!' });
+    }
+  });
+  
 
-//--  PUT req for trainer pokedex by :id --//
+
+
+// //--  PUT req for trainer pokedex by :id --//
 // router.put('/:id', withAuth, async (req, res) => {
 //     console.log('Pokedex by :id is working');
 //     try{
 //         //TODO: uncomment when needed
-//         // const trainerPokedex = await TrainerPokedex.update(
+//         // const trainerPokedex = await TrainerPokemon.update(
 //         //     {
 //         //         //TODO: properties to update
 //         //     }
 //         // );
 //         // if (!trainerPokedex) {
-//         //     res.status(404).json({message: 'No Pokedex found under this id!'});
+//         //     res.status(404).json({message: 'No Trainer Pokedex found under this id!'});
 //         //     return;
 //         // }
 //         // res.json(trainerPokedex);       
@@ -87,7 +114,7 @@ router.get('/:id', async (req, res) => {
 //     console.log('Im deleting this pokedex!');
 //     try{
 //         //TODO: uncomment when needed and check parameters
-//         // const trainerPokedexData = await TrainerPokedex.destroy({
+//         // const trainerPokedexData = await TrainerPokemon.destroy({
 //         //     where: { id: req.params.id}
 //         // });
 //         // if (!trainerPokedexData) {
