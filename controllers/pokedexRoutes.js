@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Pokemon }= require('../models');
+const { Pokemon, Pokedex }= require('../models');
+
 
 //-- GET req for all pokemons --//
 router.get('/', async (req, res) => {
@@ -18,6 +19,29 @@ router.get('/', async (req, res) => {
         res.status(500).json({message:'No Pokemons found in this region'})
     }
 });
+
+// Post party pokemon 
+router.post('/..userID', (req, res) => {
+    
+    const pokemonData = req.body
+
+    pokemonData.forEach(pokemon => {
+        Pokedex.update({
+            is_in_party: true,
+        },
+        {
+            where: {
+                user_id: req.params.userID,
+                pokemon_id: pokemon.id
+            }
+        });
+    });
+   
+    
+
+    
+
+})
 
 //-- GET req for a pokemon by :id --//
 // TODO: This route isn't needed currently
