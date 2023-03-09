@@ -7,10 +7,12 @@ router.get('/', async (req, res) => {
     try {
         const pokemonData = await Pokemon.findAll();
         const pokemons = pokemonData.map((pokemon) => pokemon.get({ plain: true }));
+
         res.render('trainer-pokedex', { 
             pokemons,
             logged_in: req.session.logged_in,
         });
+        
     } catch (err) {
         console.log(err);
         res.status(500).json({message:'No Pokemons found in this region'})
