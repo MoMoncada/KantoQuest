@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     try {
         const pokemonData = await Pokemon.findAll();
         const pokemons = pokemonData.map((pokemon) => pokemon.get({ plain: true }));
-        res.render('trainer-pokedex', { 
+        res.render('pokedex', { 
             pokemons,
             logged_in: req.session.logged_in,
         });
