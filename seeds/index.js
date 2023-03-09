@@ -1,6 +1,6 @@
 const sequelize = require("../config/connection");
 
-const seedUser = require("./user-seeds");
+const seedTrainerData = require("./trainer-seeds");
 const seedPokemon = require("./pokemon-seeds");
 const seedTrainerPokemonData = require("./trainer-pokemon-seeds");
 
@@ -13,7 +13,7 @@ const seedDatabase = async () => {
   await sequelize.query("SET FOREIGN_KEY_CHECKS = 1", null);
 
   // Working
-  await seedUser();
+  await seedTrainerData();
 
   // Working
   const pokemon = await seedPokemon();

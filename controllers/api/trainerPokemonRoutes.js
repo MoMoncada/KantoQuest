@@ -40,20 +40,24 @@ router.get('/', async (req, res) => {
 
 
 //-- GET req for trainer pokedex by :id --//
-// router.get('/:id', withAuth, async (req, res) => {
-//     console.log('Pokedex by :id is working');
-//     try {
-//         //TODO: uncomment when needed
-//         // const trainerPokedex = await TrainerPokedex.findOne(req.params.id);
-//         // if(!trainerPokedex) {
-//         //     res.status(404).json({message: 'No trainer Pokedex found with this id!'});
-//         //     return;
-//         // }
-//         // res.status(200).json(trainerPokedex);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+router.get('/:id', async (req, res) => {
+    console.log('Pokedex for Trainer by id is working');
+    try {
+        const PokemonData = await Trainer.findByPk(req.params.id, {
+            attributes: ["username"],
+            include: [
+                {
+                    model: Pokemon,
+                    attributes: ["name"]
+                },
+            ]
+        })
+        res.status(200).json(PokemonData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 
 //--  PUT req for trainer pokedex by :id --//
