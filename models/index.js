@@ -1,21 +1,20 @@
-const Pokedex = require("./Pokedex");
 const Trainer = require("./Trainer");
 const Pokemon = require("./Pokemon");
+const TrainerPokemon = require("./TrainerPokemon");
 
-
-//Trainers - Pokemon
 Trainer.belongsToMany(Pokemon, {
-  through: Pokedex
+  through: TrainerPokemon,
+  foreignKey: "trainer_id"
 })
 
 Pokemon.belongsToMany(Trainer, {
-  through: Pokedex
+  through: TrainerPokemon,
+  foreignKey: "pokemon_id"
 })
 
 
-
 module.exports = {
-  Pokedex,
   Trainer,
-  Pokemon
+  Pokemon,
+  TrainerPokemon
 };

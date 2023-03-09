@@ -2,7 +2,7 @@ const sequelize = require("../config/connection");
 
 const seedUser = require("./user-seeds");
 const seedPokemon = require("./pokemon-seeds");
-const seedPokedex = require("./pokedex-seeds");
+const seedTrainerPokemonData = require("./trainer-pokemon-seeds");
 
 const seedDatabase = async () => {
   //making sure that the tables clear every time we seed the database
@@ -19,7 +19,7 @@ const seedDatabase = async () => {
   const pokemon = await seedPokemon();
 
   // Working
-  await seedPokedex(pokemon);
+  await seedTrainerPokemonData(pokemon);
 
   process.exit(0);
 };

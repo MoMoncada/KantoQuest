@@ -1,15 +1,11 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-// This is the pokedex of the Trainer
-// Belongs to the Trainer
-// Has many Pokemon through Trainer Pokemon
+// This is the joining table to link the many Trainers to many Pokemon
 
-class Pokedex extends Model {
-  // Methods
-}
+class TrainerPokemon extends Model {}
 
-Pokedex.init(
+TrainerPokemon.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -22,13 +18,15 @@ Pokedex.init(
       references: {
         model: "trainer",
         key: "id",
+        unique: false,
       },
-    },    
+    },
     pokemon_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "pokemon",
         key: "id",
+        unique: false,
       }
     },
     is_in_party: {
@@ -41,8 +39,8 @@ Pokedex.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "pokedex",
+    modelName: "trainer_pokemon",
   }
 );
 
-module.exports = Pokedex;
+module.exports = TrainerPokemon;
