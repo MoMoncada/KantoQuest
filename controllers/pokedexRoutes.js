@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
         const pokemonData = await Pokemon.findAll();
         const pokemons = pokemonData.map((pokemon) => pokemon.get({ plain: true }));
 
-        res.render('trainer-pokedex', { 
+        res.render('pokedex', { 
             pokemons,
             logged_in: req.session.logged_in,
         });
@@ -21,27 +21,21 @@ router.get('/', async (req, res) => {
 });
 
 // Post party pokemon 
-router.post('/..userID', (req, res) => {
+// router.post('/..userID', (req, res) => {
     
-    const pokemonData = req.body
+//     const pokemonData = req.body
 
-    pokemonData.forEach(pokemon => {
-        Pokedex.update({
-            is_in_party: true,
-        },
-        {
-            where: {
-                user_id: req.params.userID,
-                pokemon_id: pokemon.id
-            }
-        });
-    });
-   
-    
-
-    
-
-})
+//     pokemonData.forEach(pokemon => {
+//         Pokedex.update({
+//             is_in_party: true,
+//         },
+//         {
+//             where: {
+//                 user_id: req.params.userID,
+//                 pokemon_id: pokemon.id
+//             }
+//         });
+//     });
 
 //-- GET req for a pokemon by :id --//
 // TODO: This route isn't needed currently

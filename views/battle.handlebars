@@ -34,24 +34,15 @@
             <div class="">
                 <h3 class="card-title ">My Party</h3>
             </div>
+                {{#each pokemons}}
+                {{#with this.trainer_pokemon}}
+                {{#with this.is_in_party}}
         <div class="pokemon-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
+            <img src="{{../../sprite}}">
         </div>
-        <div class="pokemon-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
-        </div>
-        <div class="pokemon-card">
-           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png">
-        </div>
-        <div class="pokemon-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png">
-        </div>
-        <div class="pokemon-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png">
-        </div>
-        <div class="pokemon-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png">
-        </div>
+        {{/with}}
+        {{/with}}
+        {{/each}}
         <br>
         </div>
             <br>
