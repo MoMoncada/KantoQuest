@@ -20,39 +20,5 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Post party pokemon 
-// router.post('/..userID', (req, res) => {
-    
-//     const pokemonData = req.body
-
-//     pokemonData.forEach(pokemon => {
-//         Pokedex.update({
-//             is_in_party: true,
-//         },
-//         {
-//             where: {
-//                 user_id: req.params.userID,
-//                 pokemon_id: pokemon.id
-//             }
-//         });
-//     });
-
-//-- GET req for a pokemon by :id --//
-// TODO: This route isn't needed currently
-// router.get('/:id', async (req, res) => {
-//     console.log('GET req for a single pokemon is working');
-//     try {
-//         const pokemonData = await Pokedex.findByPk(req.params.id);
-//         if (!pokemonData) {
-//             res.status(404).json({message: 'This Pokemon is not available in this region'});
-//         } else {
-//             res.status(200).json(pokemonData);
-//         }
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ message: 'This pokemon is not available in this region!'})
-//     }
-// });
-
 module.exports = router;
 

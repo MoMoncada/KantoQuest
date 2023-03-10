@@ -23,24 +23,6 @@ router.get('/', async (req, res) => {
         res.status(500).json({message:'Catch Error'})
     }
 });
-
-// Post party pokemon 
-// TODO: This goes in the api trainerPokemon route file
-// router.post('/..userID', (req, res) => {
-    
-//     const pokemonData = req.body
-
-//     pokemonData.forEach(pokemon => {
-//         Pokedex.update({
-//             is_in_party: true,
-//         },
-//         {
-//             where: {
-//                 user_id: req.params.userID,
-//                 pokemon_id: pokemon.id
-//             }
-//         });
-//     });
    
 module.exports = router;
 

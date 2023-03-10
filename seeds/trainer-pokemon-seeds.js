@@ -4,25 +4,22 @@ const trainerPokemonData = [
   {
     trainer_id: 1,
     pokemon_id: 1,
-    is_in_party: true
+    is_in_party: true,
   },
   {
     trainer_id: 1,
     pokemon_id: 2,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 1,
     pokemon_id: 3,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 1,
     pokemon_id: 4,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 1,
@@ -59,26 +56,22 @@ const trainerPokemonData = [
   {
     trainer_id: 2,
     pokemon_id: 21,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 2,
     pokemon_id: 22,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 2,
     pokemon_id: 23,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 2,
     pokemon_id: 24,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 2,
@@ -115,26 +108,22 @@ const trainerPokemonData = [
   {
     trainer_id: 3,
     pokemon_id: 41,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 3,
     pokemon_id: 42,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 3,
     pokemon_id: 43,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 3,
     pokemon_id: 44,
-    is_in_party: true
-
+    is_in_party: true,
   },
   {
     trainer_id: 3,
@@ -170,7 +159,8 @@ const trainerPokemonData = [
   },
 ];
 
-const seedTrainerPokemonData = () => TrainerPokemon.bulkCreate(trainerPokemonData, {
+const seedTrainerPokemonData = () =>
+  TrainerPokemon.bulkCreate(trainerPokemonData, {
     individualHooks: true,
     returning: true,
   });

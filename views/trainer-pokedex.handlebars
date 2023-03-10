@@ -10,13 +10,14 @@
         <section class="col s3">
             <h3>Your Party</h3> 
             <div class="row" id="party-box">
-                {{!-- Shows the path to get the is_in_party value don't remove yet --}}
+                {{!-- Shows the path to get the is_in_party value don't remove yet useful with testing--}}
                 {{!-- {{log pokemons.[5].trainer_pokemon.is_in_party }} --}}
+                {{!-- {{log pokemons.[0]}} --}}
                 {{#each pokemons}}
                 {{#with this.trainer_pokemon}}
                 {{#with this.is_in_party}}
                 <div class="col s5 z-depth-3 party-pokemon-card">
-                    <button class="remove-pokemon">x</button>
+                    <button class="remove-pokemon" data-id="{{../trainer_id}}" data-pokemon-id="{{../../id}}">Remove</button>
                     <div class="pokemon-details">
                         <img class="party-img" src="{{../../sprite}}">
                         <p class="party-name">{{capitalize ../../name}}</p>
@@ -26,8 +27,8 @@
                 {{/with}}
                 {{/each}}
             </div>
-            
-            <button class="row btn" id="save-party">Save Party</button>
+            {{!-- Save button not needed as it updates everytime it is clicked --}}
+            {{!-- <button class="row btn" id="save-party">Save Party</button> --}}
         </section>
 
         <div class="col s9" id="pokedex">

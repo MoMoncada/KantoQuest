@@ -78,21 +78,21 @@ router.post('/logout', (req, res) => {
 
 //--- GET route that fetches all the trainers from the db (excluding: password)---//
 // TODO: This route isn't needed currently
-router.get('/', async (req, res) => {
+// router.get('/', async (req, res) => {
     
-    console.log('GET req is working');
+//     console.log('GET req is working');
 
-    try {
-          const dbTrainerData = await Trainer.findAll({
-          attributes: { exclude: ['password'] }
-        });
-        res.json(dbTrainerData);
-      } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-      }
+//     try {
+//           const dbTrainerData = await Trainer.findAll({
+//           attributes: { exclude: ['password'] }
+//         });
+//         res.json(dbTrainerData);
+//       } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//       }
 
-});
+// });
 
 
 

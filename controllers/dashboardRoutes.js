@@ -21,6 +21,4 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-//-- TODO:  GET request :id endpoint, not sure if which one we need yet ---//
-
 module.exports = router;
