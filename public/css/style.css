@@ -31,6 +31,12 @@ h3 {
 	color: white;
 	position: absolute;
 }
+.add-pokemon {
+	border-radius: 100%;
+	background: rgb(5, 170, 46);
+	color: white;
+	position: absolute;
+}
 
 #save-party{
 	color: white;

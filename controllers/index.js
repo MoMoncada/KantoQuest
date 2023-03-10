@@ -5,14 +5,14 @@ const router = require("express").Router();
 const apiRoutes = require("./api/");
 const dashboardRoutes = require("./dashboardRoutes");
 const homeRoutes = require("./homeRoutes");
-const pokedexRoutes = require('./pokedexRoutes');
-const battleRoute = require('./battleRoute');
-const trainerPokedexRoutes = require('./trainerPokedexRoutes');
+const pokedexRoutes = require("./pokedexRoutes");
+const battleRoute = require("./battleRoute");
+const trainerPokedexRoutes = require("./trainerPokedexRoutes");
 
 router.use("/api", apiRoutes);
 router.use("/dashboard", dashboardRoutes);
-router.use('/pokedex', pokedexRoutes);
-router.use('/trainersPokedex', trainerPokedexRoutes);
+router.use("/pokedex", pokedexRoutes);
+router.use("/trainersPokedex", trainerPokedexRoutes);
 router.use("/", homeRoutes);
 router.use("/battle", battleRoute);
 

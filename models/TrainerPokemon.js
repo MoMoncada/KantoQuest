@@ -27,12 +27,12 @@ TrainerPokemon.init(
         model: "pokemon",
         key: "id",
         unique: false,
-      }
+      },
     },
     is_in_party: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
-    }
+      defaultValue: false,
+    },
   },
   {
     sequelize,

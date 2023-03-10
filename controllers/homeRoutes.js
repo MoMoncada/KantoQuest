@@ -1,27 +1,23 @@
 const router = require("express").Router();
 const { Trainer } = require("../models");
 
-
-
 //-- GET request for the homepage --//
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const trainersData = await Trainer.findAll({ 
-      attributes: [
-      'username', 
-      'total_score' ]
+    const trainersData = await Trainer.findAll({
+      attributes: ["username", "total_score"],
     });
 
-    const trainers = trainersData.map(trainer => trainer.get({plain:true}))
-    
-    res.render('homepage', {
-    trainers,
-    logged_in: req.session.logged_in,
-  });
+    const trainers = trainersData.map((trainer) => trainer.get({ plain: true })
+    );
 
+    res.render("homepage", {
+      trainers,
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: "Server error" });
   }
 });
 
