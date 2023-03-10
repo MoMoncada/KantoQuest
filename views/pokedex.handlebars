@@ -2,16 +2,20 @@
   main {
     background-image: url(assets/pokedex-background.jpg);
   }
+  .title-card {
+    background-color: rgba(255, 0, 0, 0.562);
+    border-radius: 10px;
+    margin: 5%;
+    text-shadow: 5px 5px 5px black;
+  }
 </style>
 
 {{!-- Center of Page --}}
 <section class="container row">
+  <div class="col s12 title-card">
+    <h1 class="white-text center">View All Pokemon To Catch!</h1>
+  </div>
   <div class="col s12">
-    {{!-- Search Bar --}}
-    <div class="card">
-      <label for="pokedex-search">Search:</label>
-      <input type="text" id="pokedex-search"/>
-    </div>
     {{#each pokemons as |pokemon|}}
     {{!-- An Individual Pokemons Pokedex Info--}}
       {{> pokedex-entry}}

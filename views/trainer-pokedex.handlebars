@@ -10,54 +10,21 @@
         <section class="col s3">
             <h3>Your Party</h3> 
             <div class="row" id="party-box">
+                {{!-- Shows the path to get the is_in_party value don't remove yet --}}
+                {{!-- {{log pokemons.[5].trainer_pokemon.is_in_party }} --}}
+                {{#each pokemons}}
+                {{#with this.trainer_pokemon}}
+                {{#with this.is_in_party}}
                 <div class="col s5 z-depth-3 party-pokemon-card">
                     <button class="remove-pokemon">x</button>
                     <div class="pokemon-details">
-                        <img class="party-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png">
-                        <p class="party-name">name</p>
+                        <img class="party-img" src="{{../../sprite}}">
+                        <p class="party-name">{{capitalize ../../name}}</p>
                     </div>
                 </div>
-
-                <div class="col s5 z-depth-3 party-pokemon-card">
-                    <button class="remove-pokemon">x</button>
-                    <div class="pokemon-details">
-                        <img class="party-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/124.png">
-                        <p class="party-name">name</p>
-                    </div>
-                </div>
-
-                <div class="col s5 z-depth-3 party-pokemon-card">
-                    <button class="remove-pokemon">x</button>
-                    <div class="pokemon-details">
-                        <img class="party-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/137.png">
-                        <p class="party-name">name</p>
-                    </div>
-                </div>
-
-                <div class="col s5 z-depth-3 party-pokemon-card">
-                    <button class="remove-pokemon">x</button>
-                    <div class="pokemon-details">
-                        <img class="party-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png">
-                        <p class="party-name">name</p>
-                    </div>
-                </div>
-
-                <div class="col s5 z-depth-3 party-pokemon-card">
-                    <button class="remove-pokemon">x</button>
-                    <div class="pokemon-details">
-                        <img class="party-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png">
-                        <p class="party-name">name</p>
-                    </div>
-                </div>
-
-                <div class="col s5 z-depth-3 party-pokemon-card">
-                    <button class="remove-pokemon">x</button>
-                    <div class="pokemon-details">
-                        <img class="party-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png">
-                        <p class="party-name">name</p>
-                    </div>
-                </div>
-
+                {{/with}}
+                {{/with}}
+                {{/each}}
             </div>
             
             <button class="row btn" id="save-party">Save Party</button>

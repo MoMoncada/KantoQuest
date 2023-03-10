@@ -11,56 +11,25 @@
           {{! User Pokedex info on the left }}
     <div class="col s12 m6 l6 xl6">
       <div class="card rounded">
-        <h3 class="card-title">{{username}}'s Pokedex</h3>
+        <h3 class="card-title">{{username}}'s Party</h3>
         <hr class="hr">
         <div class="card-content">
-          <p><a class= "edit-a" href="/pokedex">Edit Party</a></p>
+          <p><a class= "edit-a" href="/trainersPokedex">View my Pokedex/Edit my Party</a></p>
 
-          <div class="row">
-            
+          <div class="row col s12">
+            {{#each pokemons}}
+            {{#with this.trainer_pokemon}}
+            {{#with this.is_in_party}}
             <div class="col s4">
               <div class="card">
                 <div class="card-image">
-                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
+                  <img src="{{../../sprite}}">
                 </div>
               </div>
-
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png">
-                </div>
-              </div>
-            </div>
-
-            <div class="col s4">
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png">
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
-                </div>
-              </div>
-            </div>
-
-            <div class="col s4">
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png">
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
-                </div>
-              </div>
-            </div>
-
           </div>
+          {{/with}}
+          {{/with}}
+          {{/each}}
         </div>
         <p>Your highest score is: {{total_score}} points</p>
       </div>
@@ -84,7 +53,7 @@
           <div class="col s6 valign-wrapper">
             <div class="card rounded w-50">
               <div class="card-content">
-                <button class="waves-effect waves-light btn-large red"><i class="material-icons right">gamepad</i><a href="/battle" target="_blank">Battle a wild Pokemon</a></button>
+                <button class="waves-effect waves-light btn-large red"><i class="material-icons right">gamepad</i><a href="/battle">Battle a wild Pokemon</a></button>
               </div>
             </div>
           </div>

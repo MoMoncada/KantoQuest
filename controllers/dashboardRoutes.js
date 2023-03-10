@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Trainer } = require("../models");
+const { Trainer, Pokemon } = require("../models");
 const withAuth = require("../utils/auth");
 
 //-- GET req to the '/' endpoint --//
@@ -7,7 +7,9 @@ router.get("/", withAuth, async (req, res) => {
   console.log("GET Dashboard req is working");
   try {
     const trainerData = await Trainer.findByPk(req.session.user_id, {
-      attributes: { exclude: ["password"] },
+      exclude: [ { attributes: ["password"] } ],
+      include: [ { model: Pokemon } ]
+
     });
     const trainer = trainerData.get({ plain: true });
     res.render("dashboard", {

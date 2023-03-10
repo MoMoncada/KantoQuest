@@ -12,16 +12,18 @@
     border-bottom: 5px rgb(0,0,128) solid;
   }
 
-  h2 {
+  .text-blue-bold {
     color: rgb(0,0,128);
     font-weight: bold;
+    text-shadow: 1px 1px 5px white;
   }
 
-  h4{
-    
+  .title-card {
+    background-color: rgba(255, 0, 0, 0.562);
+    border-radius: 10px;
+    padding: 1% 1% 3% 1%;
+    text-shadow: 5px 5px 5px black;
   }
-
-
 </style>
 
 {{!-- FIXME: I look a bit ugly --}}
@@ -31,22 +33,27 @@
 <br>
 <br>
 
-
 <div>
   <div class="row">
-    <br>
-    <div class="col s6">
+    <div class="col s12 m8">
+      <h5 class="left white-text title-card">
+        <img src="https://www.freeiconspng.com/uploads/file-pokeball-png-0.png" width="40" alt="Pokeball"/> Battle pokemon to collect them in your Pokedex!
+        <br><img src="https://www.freeiconspng.com/uploads/pokemon-pikachu-png-2.png" width="40" alt="Pikachu" /> Test your knowledge of Type match ups!
+        <br><img src="/assets/pokemon-icicle-badge.png" width="40" alt="Badge"> Earn the biggest streak to get placed on the Hall of Fame!</h5>
+    </div>
+    <div class="col s12 m8 l6">
       {{#if trainers.length}}
       <div class="col s11 offset-s1 hall-of-fame">
-        <h2 class="center text-shadow">Hall of Fame!</h2>
+        {{!-- TODO: Order the hall of fame trainers --}}
+        
+        <h2 class="center text-shadow text-blue-bold"><img src="/assets/pokemon-icicle-badge.png" width="40" alt="Badge"> Hall of Fame! <img src="/assets/pokemon-thunder-badge.png" width="40" alt="Badge"></h2>
       </div>
       <div>
         <div class="col s11 offset-s1 hall-of-fame">
-          {{#each trainers}}
+          {{#each trainers as |trainer|}}
             <div class="row s4">
               <ol class="trainer collection-item">
-                <h4 class="header left">{{username}}: {{total_score}} points </h4>
-                
+                <h4 class="header left">{{username}} - {{total_score}} points! </h4>
               </ol>
             </div>
           {{/each}}
