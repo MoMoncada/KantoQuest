@@ -1,20 +1,66 @@
 <style>
   main {
-    background-image: url(assets/Pokemon-background.jpg);
+    background-image: url(assets/homepage_bg.png);
     background-size: cover;
     background-position:center;
     width: 100%;
     min-height: 100vh;
   }
   .hall-of-fame {
-    background-color: rgba(255, 255, 255, 0.39);
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
-    border-bottom: 5px rgb(139, 19, 19) solid;
+    border-bottom: 5px rgb(0,0,128) solid;
   }
+
+  h2 {
+    color: rgb(0,0,128);
+    font-weight: bold;
+  }
+
+  h4{
+    
+  }
+
+
 </style>
+
+{{!-- FIXME: I look a bit ugly --}}
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <div>
+  <div class="row">
+    <br>
+    <div class="col s6">
+      {{#if trainers.length}}
+      <div class="col s11 offset-s1 hall-of-fame">
+        <h2 class="center text-shadow">Hall of Fame!</h2>
+      </div>
+      <div>
+        <div class="col s11 offset-s1 hall-of-fame">
+          {{#each trainers}}
+            <div class="row s4">
+              <ol class="trainer collection-item">
+                <h4 class="header left">{{username}}: {{total_score}} points </h4>
+                
+              </ol>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+   {{/if}}
+
+
+
+
+{{!-- <div>
   <div class="row">
   <br>
   <div class="col s6">
@@ -67,4 +113,4 @@
   </div>
   </div>
   </div>
-</div>
+</div> --}}

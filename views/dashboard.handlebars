@@ -11,10 +11,10 @@
           {{! User Pokedex info on the left }}
     <div class="col s12 m6 l6 xl6">
       <div class="card rounded">
-        <h3 class="card-title"><a href="#">User Pokedex</a></h3>
-
+        <h3 class="card-title">{{username}}'s Pokedex</h3>
+        <hr class="hr">
         <div class="card-content">
-          <p><a class= "edit-a" href="#">Edit Party</a></p>
+          <p><a class= "edit-a" href="/pokedex">Edit Party</a></p>
 
           <div class="row">
             
@@ -62,9 +62,14 @@
 
           </div>
         </div>
-        <p>Your highest score is: 4</p>
+        <p>Your highest score is: {{total_score}} points</p>
       </div>
     </div>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -79,7 +84,7 @@
           <div class="col s6 valign-wrapper">
             <div class="card rounded w-50">
               <div class="card-content">
-                <button class="waves-effect waves-light btn-large red"><i class="material-icons right">gamepad</i><a href = "/battle" target = "_blank">Battle a wild Pokemon</a></button>
+                <button class="waves-effect waves-light btn-large red"><i class="material-icons right">gamepad</i><a href="/battle" target="_blank">Battle a wild Pokemon</a></button>
               </div>
             </div>
           </div>
@@ -89,6 +94,7 @@
 </main>
 
 <style>
+
   main {
     background-image: url(assets/pokeball_background.jpg);
     background-size: cover;
@@ -96,16 +102,33 @@
     width: 100%;
     min-height: 100vh;
   }
+
+  
   .card {
-    background-color: rgba(255, 255, 255, 0.39);
+    background-color: rgba(255, 255, 255, 0.85);
     border-radius: 10px;
     border-bottom: 3px rgb(139, 19, 19) solid;
   }
 
   .card .card-image img {
-    width: 50%;
+    height: auto;
+    width: 100%;
+    position: relative;
+    top: 10px;
   }
 
+.edit-a {
+    font-size: 25px;
+    color: #8b1313;
+    
+}
+
+.hr {
+  width: 100px;
+  height: 5px;
+  background-color: #8b1313;
+
+}
   .card-title {
     color: #8b1313;
     text-align: center;
@@ -117,6 +140,13 @@
     font-size: 50px;
     font-weight: bold;
   }
+
+  
+
+.card .card-title {
+    font-size: 35px;
+    font-weight: 600;
+}
 
   .card-content {
     padding: 20px;
@@ -135,9 +165,10 @@
     font-weight: bold;
     padding: 10px 0;
     text-align: center;
+    text-decoration: ;
   }
   a {
-    color: #8b1313;
+    color: #fafafa;
     font-weight: bold;
     text-decoration: none;
   }
