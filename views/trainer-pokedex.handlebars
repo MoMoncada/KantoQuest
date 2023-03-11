@@ -37,15 +37,15 @@
             {{!-- Save button not needed as it updates everytime it is clicked --}}
             {{!-- <button class="row btn" id="save-party">Save Party</button> --}}
         </section>
-
         <div class="col s9" id="pokedex">
             {{!-- Search Bar --}}
             <div class="card">
                 <label for="pokedex-search">Search:</label>
                 <input type="text" id="pokedex-search"/>
             </div>
+            {{!-- {{log pokedex}} --}}
             <div id="trainer-pokedex">
-                {{#each pokedex as |pokemon|}}
+                {{#each pokedex}}
 
                 {{!-- An Individual Pokemons Pokedex Info--}}
                 {{> trainer-pokedex-entry}}
