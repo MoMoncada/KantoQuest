@@ -13,9 +13,30 @@ router.get('/', async (req, res) => {
                 },
             ]
         });
+
         const trainer = trainerData.get({ plain: true });
+        
+        const pokemonData = await Pokemon.findAll();
+        const pokedex = pokemonData.map((pokemon) => pokemon.get({ plain: true }));
+
+        console.log(trainerData.pokemons)
+
+        // Assign is caught attribute to each pokemon that has been found by the trainer
+        pokedex.forEach(pokemon => {
+             if (trainerData.pokemons.some(trainerPokemon => trainerPokemon.id === pokemon.id)) {
+                console.log(`found ${pokemon.id}`)
+                pokemon.is_caught = true
+             } else {
+                pokemon.is_caught = false
+             }
+            })
+        
+        trainer.pokedex = pokedex
+        console.log(trainer.pokedex)
+
         res.render('trainer-pokedex', { 
             ...trainer,
+
             logged_in: req.session.logged_in,
         });
     } catch (err) {
