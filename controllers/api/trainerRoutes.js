@@ -2,22 +2,6 @@ const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 const { Trainer } = require('../../models');
 
-
-//--- GET req to populate our Hall of Fame ---//
-router.get('/', async (req, res) => {
-  try {
-    const trainers = await Trainer.findAll({ 
-      attributes:
-      ['username', 
-      'total_score'] });
-      
-    res.render('homepage', { trainers });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
-
 //--- POST route that creates a new trainer in the db ---//
 router.post('/', async (req, res) => {
   console.log('POST route for new Trainer is working');
