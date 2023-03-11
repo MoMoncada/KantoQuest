@@ -14,6 +14,23 @@ router.get("/", async (req, res) => {
       ],
     });
     const trainer = trainerData.get({ plain: true });
+
+    const pokemonData = await Pokemon.findAll();
+    const allPokemon = pokemonData.map((pokemon) => pokemon.get({ plain: true }));
+    allPokemon.forEach(pokemon => {
+      if (trainerData.pokemons.some(trainerPokemon => trainerPokemon.id === pokemon.id)) {
+        //  console.log(`found ${pokemon.id}`)
+         pokemon.is_caught = true
+      } else {
+         pokemon.is_caught = false
+      }
+     })
+
+    const wild_pokemon = allPokemon.filter(pokemon => pokemon.is_caught === false)
+    random_wild_pokemon = wild_pokemon[Math.floor(Math.random() * wild_pokemon.length)]
+    trainer.random_wild_pokemon = random_wild_pokemon
+    console.log(trainer.random_wild_pokemon);
+
     res.render("battle", {
       ...trainer,
       logged_in: req.session.logged_in,
