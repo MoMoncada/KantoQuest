@@ -66,20 +66,31 @@
             <br>
             <h1 class="other-card red-text z-depth-5">VS</h1>
         </div>
-
-        <div class="col s3 evil-card center z-depth-5">
+        {{#if random_wild_pokemon}}
+        <div class="col s3 evil-card center z-depth-5 wild-pokemon" data-id="{{random_wild_pokemon.id}}">
             <h4>Wild Pokemon</h4>
-            <img class="pokemon-card" width="150" height="150" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png">
+            <img class="pokemon-card" width="150" height="150" src="{{random_wild_pokemon.sprite}}">
             <div class="dark-card">
-                <p class="white-text">Pokemon Name</p>
-                <p class="white-text">Type 1 Type 2</p>
+                <h3 class="white-text">{{capitalize random_wild_pokemon.name}}</h3>
+                {{#if random_wild_pokemon.type_two}}
+                <p class="center pkn-type {{random_wild_pokemon.type_one}}"></p>
+                <p class="center pkn-type {{random_wild_pokemon.type_two}}"></p>
+                {{else}}
+                <p class="center pkn-type {{random_wild_pokemon.type_one}}"></p>
+                {{/if}}
             </div>
         </div>
-
         <div class="col s9 center">
             <br>
             <button class="btn red white-text z-depth-5">Battle!</button>
         </div>
+        {{else}}
+            <h4>You have caught them all!</h4>
+            <button class="btn black"><a class="white-text" href="/dashboard">Return to Dashboard</a></button>
+
+        {{/if}}
+
+
     </div>
 </section>
 
