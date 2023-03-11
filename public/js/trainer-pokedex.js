@@ -102,10 +102,6 @@ document.querySelectorAll(".remove-pokemon").forEach((delPokemon) => {
 //     }
 //   };
 
-
-  
-
-
 const addPokemonBtnHandler = async (event) => {
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
