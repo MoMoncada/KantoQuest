@@ -8,3 +8,4 @@ function selectPokemon() {
   myPartyPokemonImgs.forEach(pokemonImg => {
     pokemonImg.addEventListener("click", selectPokemon);
   });
+  
