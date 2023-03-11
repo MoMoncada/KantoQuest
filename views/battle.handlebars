@@ -1,6 +1,6 @@
 <style>
   section {
-    background-image: url(assets/battle-background.jpg);
+    background-image: url(assets/battle-background1.jpg);
     background-size: cover;
     background-position:center;
     width: 100%;
@@ -43,7 +43,7 @@
             <img id="my-party" src="{{../../sprite}}">
             <p class="party-name">{{capitalize ../../name}}</p>
             {{!-- FIXME: only rendering one type even if there are two types--}}
-            {{#if pokemon_id.type_two}}
+            {{#if pokemon_id.type_two}}  
                 <p class="center pkn-type {{../../type_one}}"></p>
                 <p class="center pkn-type {{../../type_two}}"></p>
             {{else}}
