@@ -34,11 +34,21 @@
             <div class="">
                 <h3 class="card-title ">My Party</h3>
             </div>
+             {{log pokemons.[5].trainer_pokemon.is_in_party }}
+             {{log pokemons.[0]}}
                 {{#each pokemons}}
                 {{#with this.trainer_pokemon}}
                 {{#with this.is_in_party}}
         <div class="pokemon-card">
             <img id="my-party" src="{{../../sprite}}">
+            <p class="party-name">{{capitalize ../../name}}</p>
+            {{!-- FIXME: only rendering one type even if there are two types--}}
+            {{#if pokemon_id.type_two}}
+                <p class="center pkn-type {{../../type_one}}"></p>
+                <p class="center pkn-type {{../../type_two}}"></p>
+            {{else}}
+                <p class="center pkn-type {{../../type_one}}"></p>
+            {{/if}}
         </div>
         {{/with}}
         {{/with}}
@@ -52,12 +62,20 @@
             <br>
             <br>
             <br>
+
+        {{!-- FIXME: This is what needs to be populated --}}
         <div class="col s3 offset-s1 other-card center z-depth-5">
             <h4>Your Pokemon</h4>
-            <img id="your-pokemon" class="pokemon-card" width="150" height="150" src="assets/placeholder.png">
+            <img id="your-pokemon" class="pokemon-card" width="150" height="150" src="assets/placeholder.png" data-id="{{../trainer_id}}" data-pokemon-id="{{../../id}}">
             <div class="dark-card">
-                <p class="white-text">Pokemon Name</p>
-                <p class="white-text">Type 1 Type 2</p>
+                {{!-- TODO: this isn't supposed to work yet, just an idea of what it should kind of look like --}}
+                <p class="white-text">{{pokemon_id.name}}</p>
+                {{#if pokemon_id.type_two}}
+                <p class="center pkn-type {{pokemon_id.type_one}}"></p>
+                <p class="center pkn-type {{pokemon_id.type_two}}"></p>
+                {{else}}
+                <p class="center pkn-type {{pokemon_id.type_one}}"></p>
+                {{/if}}
             </div>
         </div>
 
