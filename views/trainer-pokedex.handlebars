@@ -8,6 +8,19 @@
   height: 100%;
 }
 
+.leave {
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(139, 19, 19);
+    /* text-align: left; */
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 </style>
 
 {{!-- Center of Page --}}
@@ -33,6 +46,8 @@
                 {{/with}}
                 {{/with}}
                 {{/each}}
+                <a class="leave waves-effect waves-light btn" href="/dashboard">Go back!</a>
+                 <a class="leave waves-effect waves-light btn" href="/battle"><i class="material-icons right">gamepad</i>Battle</a>
             </div>
             {{!-- Save button not needed as it updates everytime it is clicked --}}
             {{!-- <button class="row btn" id="save-party">Save Party</button> --}}

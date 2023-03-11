@@ -90,30 +90,43 @@
 	padding: 4px 16px;
   }
 
+  .row .col.m6 {
+    width: 50%;
+    margin-left: 235px;
+    left: auto;
+    right: auto;
+}
+
   
 
 </style>
 
-<section>
+
    
     <br>
     <br>
     <br>
    
     <div class="container row">
+    <div class= "row center">
       {{!-- FIXME: I want to center the entire card in the middle of the left side of the screen --}}
           {{! User Pokedex info on the left }}
         {{#if pokemons.length}}
-    {{!-- <div class="col s12 m6 l6 xl6"> --}}
+    <div class="col s12 m6">
       <div class="card rounded">
+        
         <h3 class="card-title">{{username}}'s Party</h3>
+
         <hr class="hr">
+
         <div class="card-content">
-          <p><a class= "edit-a" href="/trainersPokedex">View my Pokedex/Edit my Party</a></p>
+          <p><a class= "edit-a" href="/trainersPokedex">My Pokedex/ Edit Party</a></p>
           <div class="row col s12">
+
             {{#each pokemons}}
             {{#with this.trainer_pokemon}}
             {{#with this.is_in_party}}
+
             <div class="col s4">
               <div class="card">
                 <div class="card-image">
@@ -169,39 +182,42 @@
                   <p class="pkn-type water"></p>
                   <p class="pkn-type-empty empty"></p>
                 </div>
+
                 <div class="center">
               <button class="waves-effect waves-light btn-small blue starter-pokemon" data-id="{{id}}" data-pokemon-id="7">Pick this pokemon?</button>
                 </div>
+
               <br>
 
             </div>
             </div>
           </div>
         </div>
+     
         {{/if}}
       
-      </div>
+       </div>
+    </div>
 <br>
 
 
 
 {{! Buttons and Highscore for current party }}
 {{!-- FIXME: I want to center the button in the middle of the right side of the screen --}}
-<div class= "row">
+
+
+  
 {{#if pokemons.length}}
       
-        <div class="col s12 valign-wrapper">
-          <div class="card rounded w-50">
-            <div class="card-content">
-              <button class="waves-effect waves-light btn-large red"><i class="material-icons right">gamepad</i><a href="/battle">Battle a wild Pokemon</a></button>
-            </div>
+        <div class="col s12">
+          <div class="card-content">
+            <button class="waves-effect waves-light btn-large red"><i class="material-icons right">gamepad</i><a href="/battle">Battle a wild Pokemon</a></button>
           </div>
         </div>
      
+     
 {{/if}}
-    </div>
-  </div>
-  </section>
+
 
 
 <script src="/js/dashboard.js"></script>
