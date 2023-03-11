@@ -66,6 +66,10 @@ h3 {
 	padding: 20px;
 
 }
+
+.darken {
+	filter: brightness(10%);
+}
 /* CSS for Pokedex Types */
 .pkn-type {
     color: white;

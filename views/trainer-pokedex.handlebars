@@ -45,7 +45,8 @@
                 <input type="text" id="pokedex-search"/>
             </div>
             <div id="trainer-pokedex">
-                {{#each pokemons as |pokemon|}}
+                {{#each pokedex as |pokemon|}}
+
                 {{!-- An Individual Pokemons Pokedex Info--}}
                 {{> trainer-pokedex-entry}}
                 {{/each}}
