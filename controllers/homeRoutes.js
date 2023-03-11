@@ -6,6 +6,8 @@ router.get("/", async (req, res) => {
   try {
     const trainersData = await Trainer.findAll({
       attributes: ["username", "total_score"],
+      order: [["total_score", "DESC"]],
+      limit: 5
     });
 
     const trainers = trainersData.map((trainer) => trainer.get({ plain: true })

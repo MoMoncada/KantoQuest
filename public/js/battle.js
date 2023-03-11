@@ -18,7 +18,7 @@ function selectPokemon() {
   } else {
     battlePokemonDiv[3].classList.add(selectedPokemonDiv[3].innerHTML);
   }
-}
+
 const myPartyPokemon = document.querySelectorAll(".my-pokemon-div");
 myPartyPokemon.forEach((pokemon) => {
   pokemon.addEventListener("click", selectPokemon);

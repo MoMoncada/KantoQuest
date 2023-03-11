@@ -90,20 +90,21 @@
 	padding: 4px 16px;
   }
 
+  
+
 </style>
 
 <section>
+   
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <div class="row">
+   
+    <div class="container row">
       {{!-- FIXME: I want to center the entire card in the middle of the left side of the screen --}}
           {{! User Pokedex info on the left }}
         {{#if pokemons.length}}
-    <div class="col s12 m6 l6 xl6">
+    {{!-- <div class="col s12 m6 l6 xl6"> --}}
       <div class="card rounded">
         <h3 class="card-title">{{username}}'s Party</h3>
         <hr class="hr">
@@ -178,34 +179,28 @@
           </div>
         </div>
         {{/if}}
+      
       </div>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
 {{! Buttons and Highscore for current party }}
 {{!-- FIXME: I want to center the button in the middle of the right side of the screen --}}
+<div class= "row">
 {{#if pokemons.length}}
-      <div class = "row button-container">
-        <div class="col s6 valign-wrapper">
+      
+        <div class="col s12 valign-wrapper">
           <div class="card rounded w-50">
             <div class="card-content">
               <button class="waves-effect waves-light btn-large red"><i class="material-icons right">gamepad</i><a href="/battle">Battle a wild Pokemon</a></button>
             </div>
           </div>
         </div>
-      </div>
-      {{/if}}
+     
+{{/if}}
     </div>
+  </div>
   </section>
 
 
