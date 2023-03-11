@@ -1,7 +1,13 @@
 <style>
   main {
-    background-image: url(assets/pokedex-background.jpg);
+    background-image: url(assets/trainer-pokedex-bg.jpg);
+    width: 100%;
+    min-height: 100vh;
   }
+  html, body {
+  height: 100%;
+}
+
 </style>
 
 {{!-- Center of Page --}}
@@ -17,7 +23,8 @@
                 {{#with this.trainer_pokemon}}
                 {{#with this.is_in_party}}
                 <div class="col s5 z-depth-3 party-pokemon-card">
-                    <button class="remove-pokemon" data-id="{{../trainer_id}}" data-pokemon-id="{{../../id}}">Remove</button>
+                    {{!-- <button class="remove-pokemon" data-id="{{../trainer_id}}" data-pokemon-id="{{../../id}}">Remove</button> --}}
+                    <button class="waves-effect waves-light btn-small remove-pokemon" data-id="{{../trainer_id}}" data-pokemon-id="{{../../id}}">-</button>
                     <div class="pokemon-details">
                         <img class="party-img" src="{{../../sprite}}">
                         <p class="party-name">{{capitalize ../../name}}</p>
