@@ -17,7 +17,7 @@ h3 {
 	height: auto;
 	width: 100%;
 	position: relative;
-	top: 10px;
+	top: 32px;
 }
 
 .party-name {
@@ -35,7 +35,7 @@ h3 {
 	border-radius: 100%;
 	background: rgb(5, 170, 46);
 	color: white;
-	position: absolute;
+	/* position: absolute; */
 }
 
 #save-party{
@@ -55,8 +55,8 @@ h3 {
 }
 
 .background{
-	padding-top: 200px;
-	height: 100vh;
+	padding-top: 100px;
+	height: 200vh;
 }
 
 
