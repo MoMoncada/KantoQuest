@@ -38,7 +38,7 @@
                 {{#with this.trainer_pokemon}}
                 {{#with this.is_in_party}}
         <div class="pokemon-card">
-            <img src="{{../../sprite}}">
+            <img id="my-party" src="{{../../sprite}}">
         </div>
         {{/with}}
         {{/with}}
@@ -54,7 +54,7 @@
             <br>
         <div class="col s3 offset-s1 other-card center z-depth-5">
             <h4>Your Pokemon</h4>
-            <img class="pokemon-card" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
+            <img id="your-pokemon" class="pokemon-card" width="150" height="150" src="assets/placeholder.png">
             <div class="dark-card">
                 <p class="white-text">Pokemon Name</p>
                 <p class="white-text">Type 1 Type 2</p>
