@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const { Pokemon, TrainerPokemon, Trainer }= require('../models');
+const withAuth = require("../utils/auth");
 
 
-//-- GET req for all trainer pokemons --//
-router.get('/', async (req, res) => {
+
+//-- GET req for all a trainers pokemons --//
+router.get('/', withAuth, async (req, res) => {
     console.log('Pokemons GET route is working');
     try {
         const trainerData = await Trainer.findOne( {where: { id: req.session.user_id },
@@ -37,7 +39,6 @@ router.get('/', async (req, res) => {
 
         res.render('trainer-pokedex', { 
             ...trainer,
-
             logged_in: req.session.logged_in,
         });
     } catch (err) {

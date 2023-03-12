@@ -1,3 +1,27 @@
+//--- Strength and weakness relationships between Pokemon types ---//
+const pokeTypes = {
+  normal: { strength: [], weakness: ["fighting"] },
+  fighting: { strength: ["normal"], weakness: ["flying", "psychic"] },
+  flying: { strength: ["fighting"], weakness: ["rock", "electric"] },
+  poison: { strength: [], weakness: ["ground", "psychic"] },
+  ground: { strength: ["poison"], weakness: ["water", "grass", "ice"] },
+  rock: { strength: ["flying", "ground"], weakness: ["water", "grass", "fighting"] },
+  bug: { strength: [], weakness: ["fire", "flying", "rock"] },
+  ghost: { strength: [], weakness: ["ghost", "dark"] },
+  steel: { strength: [], weakness: ["fire", "fighting", "ground"] },
+  fire: { strength: ["grass", "ice", "bug", "steel"], weakness: ["water", "ground", "rock"] },
+  water: { strength: ["fire", "ground", "rock"], weakness: ["electric", "grass"] },
+  grass: { strength: ["water", "ground", "rock"], weakness: ["fire", "ice", "poison", "flying", "bug"] },
+  electric: { strength: ["water", "flying"], weakness: ["ground"] },
+  psychic: { strength: [], weakness: ["bug", "ghost", "dark"] },
+  ice: { strength: ["grass", "ground", "flying", "dragon"], weakness: ["fire", "fighting", "rock", "steel"] },
+  dragon: { strength: ["dragon"], weakness: ["ice", "dragon", "fairy"] },
+  dark: { strength: [], weakness: ["fighting", "bug", "fairy"] },
+  fairy: { strength: ["fighting", "dragon", "dark"], weakness: ["poison", "steel"] }
+ 
+ 
+};
+
 function selectPokemon() {
   // Gets all the elements inside the selected Pokemon Div
   const selectedPokemonDiv = this.querySelectorAll(".my-pokemon");
@@ -24,3 +48,77 @@ const myPartyPokemon = document.querySelectorAll(".my-pokemon-div");
 myPartyPokemon.forEach((pokemon) => {
   pokemon.addEventListener("click", selectPokemon);
 });
+
+
+
+
+//--- Battle Function ---//
+const battle = async () => {
+  try {
+    const battlePokemonId = document.getElementById("battle-pokemon-div").children[1].name;
+    const wildPokemonId = document.getElementById("wild-pokemon").getAttribute("data-id");
+    const response = await fetch(`/api/pokemon/${battlePokemonId}`, {
+      method: "GET",
+    });
+    //-- Retrieving the id of the battling pokemon --//
+    if (response.ok) {
+      var battlePokemon = await response.json();
+    } else {
+      alert(response.statusText);
+      return;
+    }
+    const response2 = await fetch(`/api/pokemon/${wildPokemonId}`, {
+      method: "GET",
+    });
+    if (response2.ok) {
+      var wildPokemon = await response2.json();
+    } else {
+      alert(response2.statusText);
+      return;
+    }
+
+    //-- Compare types and choose a winner --//
+    const battlePokemonTypeOne = battlePokemon.type_one;
+    const battlePokemonTypeTwo = battlePokemon.type_two;
+    const wildPokemonTypeOne = wildPokemon.type_one;
+    const wildPokemonTypeTwo = wildPokemon.type_two;
+    let winner;
+
+    //-- Check strength and weakness of first types --//
+    if (pokeTypes[battlePokemonTypeOne].strength.includes(wildPokemonTypeOne)) {
+      winner = battlePokemon;
+    } else if (pokeTypes[wildPokemonTypeOne].strength.includes(battlePokemonTypeOne)) {
+      winner = wildPokemon;
+    } else if (pokeTypes[battlePokemonTypeOne].weakness.includes(wildPokemonTypeOne)) {
+      winner = wildPokemon;
+    } else if (pokeTypes[wildPokemonTypeOne].weakness.includes(battlePokemonTypeOne)) {
+      winner = battlePokemon;
+    } else {
+
+      //-- If types are the same or not defined in the type chart, check the second types --//
+      if (battlePokemonTypeTwo && wildPokemonTypeTwo) {
+        //-- Check strength and weakness of second types if they exist--/
+        if (pokeTypes[battlePokemonTypeTwo].strength.includes(wildPokemonTypeTwo)) {
+          winner = battlePokemon;
+        } else if (pokeTypes[wildPokemonTypeTwo].strength.includes(battlePokemonTypeTwo)) {
+          winner = wildPokemon;
+        } else if (pokeTypes[battlePokemonTypeTwo].weakness.includes(wildPokemonTypeTwo)) {
+          winner = wildPokemon;
+        } else if (pokeTypes[wildPokemonTypeTwo].weakness.includes(battlePokemonTypeTwo)) {
+          winner = battlePokemon;
+        }
+      }
+      //-- If one or both Pokémon don't have a second type, choose a random winner --//
+      if (!winner) {
+        winner = Math.random() < 0.5 ? battlePokemon : wildPokemon;
+      }
+    }
+
+    console.log(`The winner is ${winner.name}!`);
+
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+document.querySelector("#battle").addEventListener("click", battle);

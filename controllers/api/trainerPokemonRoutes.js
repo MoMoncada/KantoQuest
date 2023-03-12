@@ -2,48 +2,6 @@ const router = require("express").Router();
 const withAuth = require("../../utils/auth");
 const { Trainer, Pokemon, TrainerPokemon } = require("../../models");
 
-//-- GET req for all trainer pokedex --//
-// TODO: This route isn't needed currently
-// router.get("/", async (req, res) => {
-//   console.log("Every Trainers Pokemon here");
-//   try {
-//     const PokemonData = await Trainer.findAll({
-//       attributes: ["username"],
-//       include: [
-//         {
-//           model: Pokemon,
-//           attributes: ["name"],
-//         },
-//       ],
-//     });
-//     res.status(200).json(PokemonData);
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
-
-//-- GET req for trainer pokedex by :id --//
-// TODO: This route isn't needed currently
-// router.get("/:id", async (req, res) => {
-//   console.log("Pokedex for Trainer by id is working");
-//   try {
-//     const PokemonData = await Trainer.findByPk(req.params.id, {
-//       attributes: ["username"],
-//       include: [
-//         {
-//           model: Pokemon,
-//           attributes: ["name"],
-//         },
-//       ],
-//     });
-//     res.status(200).json(PokemonData);
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
-
 // --- Post Route for adding a pokemon to the trainerPokedex
 router.post("/", withAuth, async (req, res) => {
   console.log("Post Route for adding a pokemon!");
