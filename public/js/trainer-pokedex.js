@@ -54,6 +54,35 @@ function filterPokemon() {
   }
 }
 
+function filterCaughtPokemon() {
+   
+    // Declare variables
+    var input, ul, li, a, i, txtValue;
+    input = document.getElementById('caught-pokemon')
+    ul = document.getElementById("trainer-pokedex");
+    li = ul.getElementsByTagName('li')
+    
+    if (input.checked === true) {
+    // Loop through all list items, and hide those who don't match the search query
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName('h5');
+        txtValue = a[0].textContent;
+        if (txtValue === '???') {
+          li[i].style.display = "none";
+        } else {
+          li[i].style.display = "";
+        }
+      }
+      return
+      } else {
+        console.log('hello')
+        for (i = 0; i < li.length; i++) {
+          li[i].style.display = "";
+      }
+    }
+}
+
+
 
 
 
