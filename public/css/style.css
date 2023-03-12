@@ -3,6 +3,18 @@ h3 {
 	;
 }
 
+#pokedex-search {
+	height: 30px;
+	width: 100%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 1px solid rgb(139, 19, 19);
+	background-image: url('../assets/search.png');
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+	background-size: 20px;
+}
+
 .party-pokemon-card {
 	display: block;
 	justify-content: center;
