@@ -1,34 +1,21 @@
 <style>
-  main {
+.background-img-pokedex {
     background-image: url(assets/pokedex-background.jpg);
-  }
-  .title-card {
-    background-color: rgba(110, 18, 231, 0.85);
-    border-radius: 10px;
-    margin: 5%;
-    text-shadow: 5px 5px 5px black;
-  }
-
-  .btn-large {
-    margin-top: 10;
-    height: 54px;
-    line-height: 54px;
-    font-size: 15px;
-    padding: 0 60px;
 }
-
 </style>
 
 {{!-- Center of Page --}}
-<section class="container row">
-  <div class="col s12 title-card">
-    <a class="waves-effect waves-light btn-large red" href="/dashboard">Go back!</a>
-    <h1 class="white-text center">View All Pokemon To Catch!</h1>
-  </div>
-  <div class="col s12">
-    {{#each pokemons as |pokemon|}}
-    {{!-- An Individual Pokemons Pokedex Info--}}
+<section class="background-img-pokedex">
+  <div class="container row">
+    <div class="col s12 custom-title-card-pokedex center">
+      <h1 class="white-text center">View All Pokemon To Catch!</h1>
+      <a class="waves-effect waves-light btn-large red custom-button-pokedex" href="/dashboard">Return to Dashboard</a>
+    </div>
+    <div class="col s12">
+      {{#each pokemons as |pokemon|}}
+      {{!-- An Individual Pokemons Pokedex Info--}}
       {{> pokedex-entry}}
-    {{/each}}
+      {{/each}}
+    </div>
   </div>
 </section>
