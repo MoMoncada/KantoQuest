@@ -1,34 +1,17 @@
 <style>
-  main {
+.background-img-trainerpokedex {
     background-image: url(assets/trainer-pokedex-bg.jpg);
     width: 100%;
     min-height: 100vh;
-  }
-  html, body {
-  height: 100%;
 }
-
-.leave {
-    text-decoration: none;
-    color: #fff;
-    background-color: rgb(139, 19, 19);
-    /* text-align: left; */
-    letter-spacing: .5px;
-    -webkit-transition: background-color .2s ease-out;
-    transition: background-color .2s ease-out;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
 </style>
 
 {{!-- Center of Page --}}
-<section class="background">
-    <section class="container row col s6 pokedex-container">
+<section class="background background-img-trainerpokedex">
+    <section class="container row col s6 trainerpokedex-container">
         <section class="col s3">
-            <h3>Your Party</h3> 
-            <div class="row" id="party-box">
+            <h3 class="center white-text">Your Party</h3> 
+            <div class="row " id="party-box">
                 {{!-- Shows the path to get the is_in_party value don't remove yet useful with testing--}}
                 {{!-- {{log pokemons.[5].trainer_pokemon.is_in_party }} --}}
                 {{!-- {{log pokemons.[0]}} --}}
@@ -46,11 +29,11 @@
                 {{/with}}
                 {{/with}}
                 {{/each}}
-                <a class="leave waves-effect waves-light btn" href="/dashboard">Go back!</a>
-                 <a class="leave waves-effect waves-light btn" href="/battle"><i class="material-icons right">gamepad</i>Battle</a>
             </div>
-            {{!-- Save button not needed as it updates everytime it is clicked --}}
-            {{!-- <button class="row btn" id="save-party">Save Party</button> --}}
+            <div class="center">
+            <a class="custom-button-trainerpokedex waves-effect waves-light btn" href="/dashboard">Go back!</a>
+            <a class="custom-button-trainerpokedex waves-effect waves-light btn" href="/battle"><i class="material-icons right">gamepad</i>Battle</a>
+            </div>
         </section>
         <div class="col s9" id="pokedex">
             {{!-- Search Bar --}}
@@ -68,12 +51,12 @@
             {{!-- {{log pokedex}} --}}
             <ul id="trainer-pokedex">
                 {{#each pokedex}}
-
                 {{!-- An Individual Pokemons Pokedex Info--}}
                 {{> trainer-pokedex-entry}}
                 {{/each}}
             </ul>
             
+
         </div>
     </section>
 </section>
