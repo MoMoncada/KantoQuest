@@ -20,17 +20,16 @@ const pokeTypes = {
   fairy: { strength: ["fighting", "dragon", "dark"], weakness: ["poison", "steel"] }
 };
 
-// Function for displaying the battling pokemon
+//-- Function for displaying the battling pokemon --//
 function selectPokemon() {
-  // Gets all the elements inside the selected Pokemon Div
   const selectedPokemonDiv = this.querySelectorAll(".my-pokemon");
-  // Gets all the battle Pokemon Div elements
+  //-- Gets all the battle Pokemon Div elements --//
   const battlePokemonDiv = document.getElementById("battle-pokemon-div").querySelectorAll(".battle-pokemon");
-  // Where the replacing happens
-  // THIS IS HEAVILY RELIANT ON THE ORDER AND POSITIONS OF THE DIVS
-  // BE CAREFUL WHEN WORKING ON CSS
+  //-- Where the replacing happens --//
+  //-- THIS IS HEAVILY RELIANT ON THE ORDER AND POSITIONS OF THE DIVS --//
+  //-- BE CAREFUL WHEN WORKING ON CSS --//
   battlePokemonDiv[0].src = selectedPokemonDiv[0].src;
-  // This is where the id of the pokemon is passed through
+  //-- This is where the id of the pokemon is passed through --//
   battlePokemonDiv[0].name = selectedPokemonDiv[0].name;
   battlePokemonDiv[1].innerHTML = selectedPokemonDiv[1].innerHTML;
   battlePokemonDiv[2].className = "center pkn-type battle-pokemon";
@@ -51,9 +50,9 @@ myPartyPokemon.forEach((pokemon) => {
 //--- Battle Function ---//
 const battle = async () => {
   try {
-    // Gets the Id of the battling Pokemon
+    // Gets the Id of the battling Pokemon --//
     const battlePokemonId = document.getElementById("battle-pokemon-div").children[1].name;
-    // Gets the Id of the wild Pokemon
+    //-- Gets the Id of the wild Pokemon --//
     const wildPokemonId = document.getElementById("wild-pokemon").getAttribute("data-id");
     const response = await fetch(`/api/pokemon/${battlePokemonId}`, {
       method: "GET",
@@ -111,10 +110,10 @@ const battle = async () => {
       if (!winner) {
         winner = Math.random() < 0.5 ? battlePokemon : wildPokemon;
       }
-    }
+    };
 
     if (winner === battlePokemon) {
-      // Add pokemon to trainerPokedex
+      //-- Add pokemon to trainerPokedex --//
       const pokemon_id = wildPokemon.id
       const response = await fetch("/api/trainerPokedex", {
         method: "POST",
@@ -123,7 +122,7 @@ const battle = async () => {
       })
       if (response.ok) {
         console.log("Pokemon added");
-        // Gets the trainer data to add the score to it
+        //-- Gets the trainer data to add the score to it --//
         const response2 = await fetch(`/api/trainer`, {
           method: "GET",
         });
@@ -132,7 +131,7 @@ const battle = async () => {
           var trainerData = await response2.json();
           var old_score = await trainerData.total_score
           const total_score = old_score + 10
-          // Puts the new score in the trainer
+          //-- Puts the new score in the trainer --//
           const response3 = await fetch("/api/trainer", {
             method: "PUT",
             body: JSON.stringify({ total_score }),
@@ -151,7 +150,7 @@ const battle = async () => {
         console.log("Not successful addition");
       }
     } else {
-        // Reset score with a put
+        //-- PUT request to reset the score --//
         const total_score = 0
         const response = await fetch("/api/trainer", {
           method: "PUT",

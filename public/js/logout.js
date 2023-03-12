@@ -1,3 +1,4 @@
+//--- Logs the user out and redirects them to the homepage ---//
 const logout = async () => {
   const response = await fetch("/api/trainer/logout", {
     method: "POST",

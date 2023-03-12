@@ -3,9 +3,9 @@ const Pokedex = require("Pokedex-promise-v2");
 const P = new Pokedex();
 
 async function seedPokemon() {
+
+  //-- Creating our Pokemon array from PokeAPI --//
   const pokemonData = [];
-  // create pokemonData array
-  // TODO: Reduced to 25, Change when no more testing is needed
   for (let i = 1; i <= 151; i++) {
     pokemonData.push(P.getPokemonByName(i));
   }
@@ -37,8 +37,6 @@ async function seedPokemon() {
   });
 }
 
-// This was also being called inside our index.js.
-// Only uncomment for manual testing purposes
-// seedPokemon()
+
 
 module.exports = seedPokemon;

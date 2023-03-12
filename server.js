@@ -30,15 +30,15 @@ const sess = {
   }),
 };
 
-const helpers = require("./utils/helpers");
 
+const helpers = require("./utils/helpers");
 const hbs = exphbs.create({ helpers });
 
-app.use(session(sess));
-
+//-- Setting up the handlebars --//
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
+//-- Serving static files --//
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname , "public")));
