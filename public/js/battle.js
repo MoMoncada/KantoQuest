@@ -149,7 +149,19 @@ const battle = async () => {
         console.log("Not successful addition");
       }
     } else {
-      // Reset score with a put
+
+      const response3 = await fetch("/api/pokemon/random", {
+        method: "GET",
+      });
+      if (response3.ok) {
+        var newWildPokemon = await response3.json();
+        document.getElementById("wild-pokemon").setAttribute("data-id", newWildPokemon.id);
+        document.getElementById("wild-pokemon-img").setAttribute("src", newWildPokemon.image_url);
+      } else {
+        alert(response3.statusText);
+        return;
+      }
+        // Reset score with a put
         const total_score = 0
         const response = await fetch("/api/trainer", {
           method: "PUT",

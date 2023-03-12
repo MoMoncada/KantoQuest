@@ -1,4 +1,4 @@
-# Pokemon Battle Simulator
+# KantoQuest: Pokemon Battle Simulator
 
 ## Description
 Have you ever wanted to be the very best (like no one ever was)? With KantoQuest you can finally make that dream come true.
@@ -45,19 +45,21 @@ Mix and match to find the best combination to continue with your winning streak 
 
 ## Application Documentation
 
+### Choose your Starter Pokemon
+![starter-pokemon](/public/assets/choose-starter.png)
 
-### Creating the database
 
+### Trainer's Dashboard
 ![dashboard]()
 
 
-### Populating the Table
+### Select the right type to defeat your opponent
 
-![battle]()
+![battle](./public/assets/battle-pokemon.png)
 
 
-### Insomnia
-![pokedex]()
+### Complete the 151 Pokedex Entries
+![pokedex](./public/assets/choose-party.png)
 
 
 
