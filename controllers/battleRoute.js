@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { Trainer, Pokemon, TrainerPokemon } = require("../models");
+const withAuth = require("../utils/auth");
 
 //-- GET req for battle page --//
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   console.log("Battle GET route is working");
   try {
     const trainerData = await Trainer.findOne({
@@ -15,11 +16,11 @@ router.get("/", async (req, res) => {
     });
     const trainer = trainerData.get({ plain: true });
 
+    // Gets a wild pokemon to battle against
     const pokemonData = await Pokemon.findAll();
     const allPokemon = pokemonData.map((pokemon) => pokemon.get({ plain: true }));
     allPokemon.forEach(pokemon => {
       if (trainerData.pokemons.some(trainerPokemon => trainerPokemon.id === pokemon.id)) {
-        //  console.log(`found ${pokemon.id}`)
          pokemon.is_caught = true
       } else {
          pokemon.is_caught = false

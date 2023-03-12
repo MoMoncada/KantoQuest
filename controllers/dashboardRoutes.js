@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Trainer, Pokemon } = require("../models");
 const withAuth = require("../utils/auth");
 
-//-- GET req to the '/' endpoint --//
+//-- GET req for the dashboard --//
 router.get("/", withAuth, async (req, res) => {
   console.log("GET Dashboard req is working");
   try {

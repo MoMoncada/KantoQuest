@@ -33,6 +33,4 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-//TODO: any other GET requests we might find along the way
-
 module.exports = router;
