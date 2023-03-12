@@ -1,22 +1,22 @@
 //--- Strength and weakness relationships between Pokemon types ---//
 const pokeTypes = {
   normal: { strength: [], weakness: ["fighting"] },
-  fighting: { strength: ["normal"], weakness: ["flying", "psychic"] },
-  flying: { strength: ["fighting"], weakness: ["rock", "electric"] },
-  poison: { strength: [], weakness: ["ground", "psychic"] },
-  ground: { strength: ["poison"], weakness: ["water", "grass", "ice"] },
-  rock: { strength: ["flying", "ground"], weakness: ["water", "grass", "fighting"] },
-  bug: { strength: [], weakness: ["fire", "flying", "rock"] },
-  ghost: { strength: [], weakness: ["ghost", "dark"] },
-  steel: { strength: [], weakness: ["fire", "fighting", "ground"] },
+  fighting: { strength: ["normal", "ice", "rock", "dark", "steel"], weakness: ["flying", "psychic","fairy"] },
+  flying: { strength: ["grass", "fighting", "bug"], weakness: ["rock", "ice", "electric"] },
+  poison: { strength: ["grass", "fairy"], weakness: ["ground", "psychic"] },
+  ground: { strength: ["fire", "electric", "poison", "rock", "steel"], weakness: ["water", "grass", "ice"] },
+  rock: { strength: ["fire", "ice", "flying", "bug"], weakness: ["water", "grass", "fighting", "ground", "steel"] },
+  bug: { strength: ["grass", "psychic", "dark"], weakness: ["fire", "flying", "rock"] },
+  ghost: { strength: ["psychic", "ghost"], weakness: ["ghost", "dark"] },
+  steel: { strength: ["ice", "rock", "fairy"], weakness: ["fire", "fighting", "ground"] },
   fire: { strength: ["grass", "ice", "bug", "steel"], weakness: ["water", "ground", "rock"] },
   water: { strength: ["fire", "ground", "rock"], weakness: ["electric", "grass"] },
   grass: { strength: ["water", "ground", "rock"], weakness: ["fire", "ice", "poison", "flying", "bug"] },
   electric: { strength: ["water", "flying"], weakness: ["ground"] },
-  psychic: { strength: [], weakness: ["bug", "ghost", "dark"] },
+  psychic: { strength: ["fighting", "poison"], weakness: ["bug", "ghost", "dark"] },
   ice: { strength: ["grass", "ground", "flying", "dragon"], weakness: ["fire", "fighting", "rock", "steel"] },
   dragon: { strength: ["dragon"], weakness: ["ice", "dragon", "fairy"] },
-  dark: { strength: [], weakness: ["fighting", "bug", "fairy"] },
+  dark: { strength: ["psychic", "ghost"], weakness: ["fighting", "bug", "fairy"] },
   fairy: { strength: ["fighting", "dragon", "dark"], weakness: ["poison", "steel"] }
 };
 
