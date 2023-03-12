@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Pokemon, Pokedex }= require('../models');
+const { Pokemon }= require('../models');
 
 
-//-- GET req for all pokemons --//
+//-- GET req for pokedex page displaying all pokemon --//
 router.get('/', async (req, res) => {
     console.log('Pokemons GET route is working');
     try {

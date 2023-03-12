@@ -2,7 +2,8 @@ const router = require("express").Router();
 const withAuth = require("../../utils/auth");
 const { Trainer, Pokemon, TrainerPokemon } = require("../../models");
 
-router.get('/:id', async (req, res) => {
+// Get route for getting a single Pokemons data
+router.get('/:id', withAuth, async (req, res) => {
     console.log('Pokemons GET route is working');
     try {
         const pokemonData = await Pokemon.findOne({ where: { id: req.params.id} });
