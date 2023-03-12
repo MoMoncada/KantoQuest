@@ -11,26 +11,23 @@
   <body>
 
     {{! <!-- Top Navbar --> }}
-    <div class="navbar-fixed">
-    <nav >
-      <div class="nav-wrapper red">
-          <a href="/" class="brand-logo center black-text">KantoQuest</a>
-          <ul class="left">
-            <li><a href="/">Homepage</a></li>
-            <li><a href="/dashboard">User Dashboard</a></button>
-          </ul>
-          <ul class="right">
-            <li><a href="/pokedex">Pokedex</a></li>
-            {{#if logged_in}}
-            <li><a href="/" id="logout">Logout</a></button>
-            {{else}}
-            <li><a href="/login">Sign-up</a></button>
-            {{/if}}
-            <li><a href="https://github.com/RyanMcd29/pokemon-battle/" target="_blank">Our GitHub</a></li>
-          </ul>
-      </div>
+   <nav class="nav-wrapper red">
+      <a href="/" class="brand-logo center black-text">KantoQuest</a>
+
+      <ul class="left">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/dashboard">User Dashboard</a></button>
+      </ul>
+      <ul class="right">
+        <li><a href="/pokedex">Pokedex</a></li>
+        {{#if logged_in}}
+        <li><a href="/" id="logout">Logout</a></button>
+        {{else}}
+        <li><a href="/login">Sign-up</a></button>
+        {{/if}}
+        <li><a href="https://github.com/RyanMcd29/pokemon-battle/" target="_blank">Our GitHub</a></li>
+      </ul>
     </nav>
-    </div>
 
     {{! <!-- Content Container --> }}
     <main>
