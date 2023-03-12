@@ -299,6 +299,7 @@
 }
 
 /****** CSS For Trainer-Pokedex Handlebars file ******/
+
 .custom-button-trainerpokedex {
     text-decoration: none;
     color: #fff;
@@ -334,6 +335,19 @@
 	width: 100%;
 	position: relative;
 	top: 32px;
+}
+
+#pokedex-search {
+	height: 30px;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 2px solid rgb(139, 19, 19);
+	border-radius: 10px;
+	background-color: white;
+	background-image: url('../assets/search.png');
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+	background-size: 20px;
 }
 
 .trainerpokedex-img {

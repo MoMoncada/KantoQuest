@@ -37,17 +37,26 @@
         </section>
         <div class="col s9" id="pokedex">
             {{!-- Search Bar --}}
-            <div class="card">
-                <label for="pokedex-search">Search:</label>
-                <input type="text" id="pokedex-search"/>
+            <div class="row">
+                <div class="col s10">
+                    <input class="col s4" type="text" id="pokedex-search" onkeyup="filterPokemon()" placeholder="Search for Pokemon"/>
+                    <p class="col s4">
+                        <label>
+                            <input id="caught-pokemon" type="checkbox" onclick="filterCaughtPokemon()">
+                            <span>Only show caught pokemon</span>
+                        </label>
+                    </p>
+                </div>
             </div>
             {{!-- {{log pokedex}} --}}
-            <div id="trainer-pokedex">
+            <ul id="trainer-pokedex">
                 {{#each pokedex}}
                 {{!-- An Individual Pokemons Pokedex Info--}}
                 {{> trainer-pokedex-entry}}
                 {{/each}}
-            </div>
+            </ul>
+            
+
         </div>
     </section>
 </section>
