@@ -1,3 +1,4 @@
+//--- Sequelize instance to connect to the database ---//
 const Sequelize = require("sequelize");
 require("dotenv").config();
 

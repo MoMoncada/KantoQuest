@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Trainer } = require("../models");
 
+
 //-- GET request for the homepage --//
 router.get("/", async (req, res) => {
   try {
@@ -22,6 +23,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
 
 //--- GET request for the login page ---//
 router.get("/login", (req, res) => {

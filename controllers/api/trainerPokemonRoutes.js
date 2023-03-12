@@ -2,7 +2,8 @@ const router = require("express").Router();
 const withAuth = require("../../utils/auth");
 const { Trainer, Pokemon, TrainerPokemon } = require("../../models");
 
-// --- Post Route for adding a pokemon to the trainerPokedex
+
+// -- POST route for adding a pokemon to the trainerPokedex --//
 router.post("/", withAuth, async (req, res) => {
   console.log("Post Route for adding a pokemon!");
   try {
@@ -15,6 +16,7 @@ router.post("/", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 //-- PUT request to remove from trainers party --//
 router.put("/remove/:id", withAuth, async (req, res) => {
@@ -45,8 +47,8 @@ router.put("/remove/:id", withAuth, async (req, res) => {
   }
 });
 
-//-- PUT request to add to trainers party --//
 
+//-- PUT request to add to trainers party --//
 router.put("/add/:id", withAuth, async (req, res) => {
   console.log(`PUT route for adding a pokemon is working!`);
   try {
@@ -76,8 +78,8 @@ router.put("/add/:id", withAuth, async (req, res) => {
 });
 
 
-// POST route for adding the starter Pokemon
-// Also adds it to their party
+
+// POST route to add starter Pokemon to trainer's party --//
 router.post("/starteradd/:id", withAuth, async (req, res) => {
   console.log(`POST route for adding a pokemon to pokedex is working!`);
   try {
@@ -99,5 +101,8 @@ router.post("/starteradd/:id", withAuth, async (req, res) => {
     return res.status(500).json({ message: "Unable to update Pokedex!" });
   }
 });
+
+
+
 
 module.exports = router;

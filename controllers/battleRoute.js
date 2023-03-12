@@ -1,12 +1,14 @@
 const router = require("express").Router();
-const { Trainer, Pokemon, TrainerPokemon } = require("../models");
+const { Trainer, Pokemon } = require("../models");
 const withAuth = require("../utils/auth");
 
-//-- GET req for battle page --//
+
+//-- GET request for battle page --//
 router.get("/", withAuth, async (req, res) => {
   console.log("Battle GET route is working");
   try {
     const trainerData = await Trainer.findOne({
+      attributes: { exclude: ['password'] },
       where: { id: req.session.user_id },
       include: [
         {
@@ -16,7 +18,10 @@ router.get("/", withAuth, async (req, res) => {
     });
     const trainer = trainerData.get({ plain: true });
 
-    // Gets a wild pokemon to battle against
+
+
+
+    //-- GET request for a Wild Pokemon to battle --//
     const pokemonData = await Pokemon.findAll();
     const allPokemon = pokemonData.map((pokemon) => pokemon.get({ plain: true }));
     allPokemon.forEach(pokemon => {
@@ -41,5 +46,7 @@ router.get("/", withAuth, async (req, res) => {
     res.status(500).json({ message: "Catch Error" });
   }
 });
+
+
 
 module.exports = router;

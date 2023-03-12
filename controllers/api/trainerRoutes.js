@@ -2,7 +2,24 @@ const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 const { Trainer } = require('../../models');
 
-//--- POST route that creates a new trainer in the db ---//
+
+//-- GET route for an individual trainer --//
+router.get("/", withAuth, async (req, res) => {
+  console.log(" GET route is working");
+  try {
+    const trainerData = await Trainer.findOne({
+      attributes: { exclude: ['password'] },
+      where: { id: req.session.user_id }
+    })
+    res.status(200).json(trainerData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Catch Error" });
+  }
+});
+
+
+//-- POST route that creates a new trainer in the db --//
 router.post('/', async (req, res) => {
   console.log('POST route for new Trainer is working');
   try {
@@ -23,24 +40,8 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Put route for changing the trainers score
-router.put('/', async (req, res) => {
-  try {
-    const trainerData = await Trainer.update(
-      {
-        total_score: req.body.total_score,
-      },
-      {
-        where: {
-          id: req.session.user_id,
-        },
-      }
-    )
-    return res.status(200).json(trainerData);
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
+
+
 
 //--- POST route for /login, lets existing users log in ---//
 router.post('/login', async (req, res) => {
@@ -68,6 +69,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
+
 //--- POST route for /logout when a user is logged out ---//
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -79,19 +82,27 @@ router.post('/logout', (req, res) => {
   }
 });
 
-//  Get route for an individual trainer
-router.get("/", withAuth, async (req, res) => {
-  console.log("Battle GET route is working");
+
+
+//-- PUT route for changing the trainers score --//
+router.put('/', async (req, res) => {
   try {
-    const trainerData = await Trainer.findOne({
-      where: { id: req.session.user_id },
-    })
-    res.status(200).json(trainerData);
+    const trainerData = await Trainer.update(
+      {
+        total_score: req.body.total_score,
+      },
+      {
+        where: {
+          id: req.session.user_id,
+        },
+      }
+    )
+    return res.status(200).json(trainerData);
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Catch Error" });
+    res.status(500).json(err)
   }
 });
+
 
   
   module.exports = router;

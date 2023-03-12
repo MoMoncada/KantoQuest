@@ -1,14 +1,14 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-// This is a Pokemon from the api
-// Belongs to many Trainers through PokemonTrainer
+//-- This is a Pokemon from the api, 
+//belongs to many Trainers through PokemonTrainer --//
 
 class Pokemon extends Model {
-  // Pokemon Methods
+  
 }
 
-// init pokemon sequelize object
+//-- Properties and Data Types --//
 Pokemon.init(
   {
     id: {

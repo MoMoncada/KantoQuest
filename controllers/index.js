@@ -9,6 +9,7 @@ const pokedexRoutes = require("./pokedexRoutes");
 const battleRoute = require("./battleRoute");
 const trainerPokedexRoutes = require("./trainerPokedexRoutes");
 
+//--- defining URL paths ---//
 router.use("/api", apiRoutes);
 router.use("/dashboard", dashboardRoutes);
 router.use("/pokedex", pokedexRoutes);
