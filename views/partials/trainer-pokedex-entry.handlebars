@@ -2,34 +2,26 @@
 
 {{!-- If pokemon is caught render normally --}}
 <div class="card-panel row pokemon center">
-<button class="waves-effect waves-light btn left add-pokemon" data-id="{{trainers_id}}" data-pokemon-id="{{id}}">+</button>
-
-  <p class="col s2 left">#{{id}}</p>
-  <img class ="col s1" width="50px" height="50px" src="{{sprite}}" />
+  <button class="waves-effect waves-light btn left add-pokemon" data-id="{{trainers_id}}" data-pokemon-id="{{id}}">+</button>
+  <p class="col s1 left">#{{id}}</p>
+  <img class ="col s2 trainerpokedex-img" width="50px" height="50px" src="{{sprite}}" />
   <h5 class="center col s3">{{capitalize name}}</h5>
-  <div class="row col s4">
+  <div class="row col s4 offset-s1">
     {{! // if pokemon has 2 types }}
     {{#if type_two}}
-      <p class="col s6 center pkn-type {{type_one}}"></p>
-      <p class="col s6 center pkn-type {{type_two}}"></p>
+    <p class="col s6 center pkn-type {{type_one}}"></p>
+    <p class="col s6 center pkn-type {{type_two}}"></p>
     {{else}}
-      <p class="center col s6 pkn-type {{type_one}}"></p>
-
+    <p class="center col s6 pkn-type {{type_one}}"></p>
     {{/if}}
   </div>
- </div>
-
-{{else}}
-
-{{!-- if not caught render hidden --}}
-<div class="card-panel row pokemon center">
-
- <p class="col s2 left">#{{id}}</p>
-  <img class ="col s1 darken" width="50px" height="50px" src="{{sprite}}" />
+</div>
+ {{else}}
+ {{!-- if not caught render hidden --}}
+ <div class="card-panel row pokemon center">
+  <p class="col s2 left">#{{id}}</p>
+  <img class ="col s2 darken trainerpokedex-img" width="50px" height="50px" src="{{sprite}}" />
   <h5 class="center col s3">???</h5>
-  
-<div class="row col s4">
-  </div>
 </div>
 
 {{/if}}
