@@ -151,7 +151,7 @@ const battle = async () => {
         console.log("Not successful addition");
       }
     } else {
-      // Reset score with a put
+        // Reset score with a put
         const total_score = 0
         const response = await fetch("/api/trainer", {
           method: "PUT",
