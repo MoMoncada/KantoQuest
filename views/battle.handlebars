@@ -120,7 +120,7 @@ h3 {
         </div>
         {{!-- Wild Pokemon data --}}
         {{#if random_wild_pokemon}}
-        <div class="col s3 evil-card center z-depth-5 wild-pokemon" data-id="{{random_wild_pokemon.id}}">
+        <div id="wild-pokemon" class="col s3 evil-card center z-depth-5 wild-pokemon" data-id="{{random_wild_pokemon.id}}">
             <h4>Wild Pokemon</h4>
             <img class="pokemon-card" width="150" height="150" src="{{random_wild_pokemon.sprite}}">
             <div class="dark-card">
@@ -136,7 +136,7 @@ h3 {
         {{!-- Battle Button --}}
         <div class="col s9 center">
             <br>
-            <button class="btn-large red white-text z-depth-5"><i class="material-icons right">videogame_asset</i>FIGHT </button>
+            <button id="battle" class="btn-large red white-text z-depth-5"><i class="material-icons right">videogame_asset</i>FIGHT </button>
         </div>
         {{else}}
         {{!-- If they have no pokemon left to fight --}}

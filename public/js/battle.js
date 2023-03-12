@@ -24,3 +24,38 @@ const myPartyPokemon = document.querySelectorAll(".my-pokemon-div");
 myPartyPokemon.forEach((pokemon) => {
   pokemon.addEventListener("click", selectPokemon);
 });
+
+
+
+// Battle Function
+const battle = async () => {
+  try {
+    const battlePokemonId = document.getElementById("battle-pokemon-div").children[1].name
+    const wildPokemonId = document.getElementById("wild-pokemon").getAttribute("data-id")
+    const response = await fetch(`/api/pokemon/${battlePokemonId}`, {
+      method: "GET",
+    });
+    if (response.ok) {
+      var battlePokemon = await response.json();
+      // console.log(battlePokemon);
+    } else {
+      alert(response.statusText);
+    }
+    const response2 = await fetch(`/api/pokemon/${wildPokemonId}`, {
+      method: "GET",
+    });
+    if (response2.ok) {
+      var wildPokemon = await response2.json();
+      // console.log(wildPokemon);
+    } else {
+      alert(response2.statusText);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  console.log(battlePokemon);
+  console.log(wildPokemon);
+
+};
+document.querySelector("#battle").addEventListener("click", battle);
+
