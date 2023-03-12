@@ -334,7 +334,7 @@
 	height: auto;
 	width: 100%;
 	position: relative;
-	top: 32px;
+	top: 16px;
 }
 
 #pokedex-search {
@@ -350,9 +350,13 @@
 	background-size: 20px;
 }
 
+.party-nav {
+	position:absolute;
+	top: 800px
+}
+
 .trainerpokedex-img {
-	height: auto;
-	width: 100%;
+	width: auto;
 	position: relative;
 
 }

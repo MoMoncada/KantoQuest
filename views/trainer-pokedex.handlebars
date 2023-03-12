@@ -30,7 +30,7 @@
                 {{/with}}
                 {{/each}}
             </div>
-            <div class="center">
+            <div class="center party-nav">
             <a class="custom-button-trainerpokedex waves-effect waves-light btn" href="/dashboard">Go back!</a>
             <a class="custom-button-trainerpokedex waves-effect waves-light btn" href="/battle"><i class="material-icons right">gamepad</i>Battle</a>
             </div>
@@ -38,8 +38,8 @@
         <div class="col s9" id="pokedex">
             {{!-- Search Bar --}}
             <div class="row">
-                <div class="col s10">
-                    <input class="col s4" type="text" id="pokedex-search" onkeyup="filterPokemon()" placeholder="Search for Pokemon"/>
+                <div>
+                    <input class="col m5 s12" type="text" id="pokedex-search" onkeyup="filterPokemon()" placeholder="Search for Pokemon"/>
                     <p class="col s4">
                         <label>
                             <input id="caught-pokemon" type="checkbox" onclick="filterCaughtPokemon()">
