@@ -21,7 +21,26 @@ router.post('/', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
-  });
+});
+
+// Put route for changing the trainers score
+router.put('/', async (req, res) => {
+  try {
+    const trainerData = await Trainer.update(
+      {
+        total_score: req.body.total_score,
+      },
+      {
+        where: {
+          id: req.session.user_id,
+        },
+      }
+    )
+    return res.status(200).json(trainerData);
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
 
 //--- POST route for /login, lets existing users log in ---//
 router.post('/login', async (req, res) => {
@@ -59,5 +78,20 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+//  Get route for an individual trainer
+router.get("/", withAuth, async (req, res) => {
+  console.log("Battle GET route is working");
+  try {
+    const trainerData = await Trainer.findOne({
+      where: { id: req.session.user_id },
+    })
+    res.status(200).json(trainerData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Catch Error" });
+  }
+});
+
   
   module.exports = router;

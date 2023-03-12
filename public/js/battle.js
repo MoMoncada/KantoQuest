@@ -18,10 +18,9 @@ const pokeTypes = {
   dragon: { strength: ["dragon"], weakness: ["ice", "dragon", "fairy"] },
   dark: { strength: [], weakness: ["fighting", "bug", "fairy"] },
   fairy: { strength: ["fighting", "dragon", "dark"], weakness: ["poison", "steel"] }
- 
- 
 };
 
+// Function for displaying the battling pokemon
 function selectPokemon() {
   // Gets all the elements inside the selected Pokemon Div
   const selectedPokemonDiv = this.querySelectorAll(".my-pokemon");
@@ -49,24 +48,24 @@ myPartyPokemon.forEach((pokemon) => {
   pokemon.addEventListener("click", selectPokemon);
 });
 
-
-
-
 //--- Battle Function ---//
 const battle = async () => {
   try {
+    // Gets the Id of the battling Pokemon
     const battlePokemonId = document.getElementById("battle-pokemon-div").children[1].name;
+    // Gets the Id of the wild Pokemon
     const wildPokemonId = document.getElementById("wild-pokemon").getAttribute("data-id");
     const response = await fetch(`/api/pokemon/${battlePokemonId}`, {
       method: "GET",
     });
-    //-- Retrieving the id of the battling pokemon --//
+    //-- Retrieving the data of the battling pokemon --//
     if (response.ok) {
       var battlePokemon = await response.json();
     } else {
       alert(response.statusText);
       return;
     }
+    //-- Retrieving the data of the wild pokemon --//
     const response2 = await fetch(`/api/pokemon/${wildPokemonId}`, {
       method: "GET",
     });
@@ -114,8 +113,52 @@ const battle = async () => {
       }
     }
 
-    console.log(`The winner is ${winner.name}!`);
-
+    if (winner === battlePokemon) {
+      // Add pokemon to trainerPokedex
+      const pokemon_id = wildPokemon.id
+      const response = await fetch("/api/trainerPokedex", {
+        method: "POST",
+        body: JSON.stringify({ pokemon_id }),
+        headers: { "Content-Type": "application/json" },
+      })
+      if (response.ok) {
+        console.log("Pokemon added");
+        // Gets the trainer data to add the score to it
+        const response2 = await fetch(`/api/trainer`, {
+          method: "GET",
+        });
+        if (response2.ok) {
+          console.log("Trainer score GET");
+          var trainerData = await response2.json();
+          var old_score = await trainerData.total_score
+          const total_score = old_score + 10
+          // Puts the new score in the trainer
+          const response3 = await fetch("/api/trainer", {
+            method: "PUT",
+            body: JSON.stringify({ total_score }),
+            headers: { "Content-Type": "application/json" },
+          })
+          if (response3.ok) {
+          console.log("Trainer score added");
+        }
+        } else {
+          alert(response.statusText);
+          return;
+        }
+      } else {
+        console.log("Not successful addition");
+      }
+    } else {
+      // Reset score with a put
+        const total_score = 0
+        const response = await fetch("/api/trainer", {
+          method: "PUT",
+          body: JSON.stringify({ total_score }),
+          headers: { "Content-Type": "application/json" },
+        })
+        if (response.ok) {
+        console.log("Trainer score removed");
+      }}
   } catch (err) {
     console.log(err);
   }
