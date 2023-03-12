@@ -145,6 +145,8 @@ const battle = async () => {
           alert(response.statusText);
           return;
         }
+        alert("Congrations! You have successfully caught the Pokemon!\nYou have gained 10 points!")
+        document.location.reload();
       } else {
         console.log("Not successful addition");
       }
@@ -158,7 +160,9 @@ const battle = async () => {
         })
         if (response.ok) {
         console.log("Trainer score removed");
+      alert("You Lost!\nYour Streak has been reset to 0")
       }}
+
   } catch (err) {
     console.log(err);
   }
