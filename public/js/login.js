@@ -1,3 +1,4 @@
+//-- Retrieves the user's info  and if it's 200ok it takes the user to the dashboard --//
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -21,6 +22,8 @@ const loginFormHandler = async (event) => {
   }
 };
 
+
+//-- Retrieves a new user's info to sign up--//
 const signupFormHandler = async (event) => {
   event.preventDefault();
 

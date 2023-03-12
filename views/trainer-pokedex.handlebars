@@ -6,6 +6,8 @@
 }
 </style>
 
+
+{{!-- Trainer's Pokedex handlebars --}}
 {{!-- Center of Page --}}
 <section class="background background-img-trainerpokedex">
     <section class="container row col s6 trainerpokedex-container">
@@ -19,7 +21,6 @@
                 {{#with this.trainer_pokemon}}
                 {{#with this.is_in_party}}
                 <div class="col s5 z-depth-3 party-pokemon-card">
-                    {{!-- <button class="remove-pokemon" data-id="{{../trainer_id}}" data-pokemon-id="{{../../id}}">Remove</button> --}}
                     <button class="waves-effect waves-light btn-small remove-pokemon" data-id="{{../trainer_id}}" data-pokemon-id="{{../../id}}">-</button>
                     <div class="pokemon-details">
                         <img class="party-img" src="{{../../sprite}}">
