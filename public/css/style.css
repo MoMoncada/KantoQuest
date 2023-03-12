@@ -5,14 +5,21 @@ h3 {
 
 #pokedex-search {
 	height: 30px;
-	width: 100%;
 	font-size: 16px;
 	padding: 12px 20px 12px 40px;
-	border: 1px solid rgb(139, 19, 19);
+	border: 2px solid rgb(139, 19, 19);
+	border-radius: 10px;
+	background-color: white;
 	background-image: url('../assets/search.png');
 	background-repeat: no-repeat;
 	background-position: 10px 50%;
 	background-size: 20px;
+}
+
+#pokedex-caught {
+	/* width: 50px;
+	height: 50px; */
+
 }
 
 .party-pokemon-card {
