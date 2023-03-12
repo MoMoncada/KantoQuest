@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Trainer, Pokemon } = require("../models");
 const withAuth = require("../utils/auth");
 
+
 //-- GET req for the dashboard --//
 router.get("/", withAuth, async (req, res) => {
   console.log("GET Dashboard req is working");
@@ -20,5 +21,7 @@ router.get("/", withAuth, async (req, res) => {
     res.status(500).json({ message: "This is the error I want" });
   }
 });
+
+
 
 module.exports = router;

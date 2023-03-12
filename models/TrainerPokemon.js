@@ -1,10 +1,11 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-// This is the joining table to link the many Trainers to many Pokemon
+//-- This is the joining table to link the many Trainers to many Pokemon --//
 
 class TrainerPokemon extends Model {}
 
+//-- Properties and Data Types --//
 TrainerPokemon.init(
   {
     id: {

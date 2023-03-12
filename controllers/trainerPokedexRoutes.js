@@ -1,14 +1,16 @@
 const router = require('express').Router();
-const { Pokemon, TrainerPokemon, Trainer }= require('../models');
+const { Pokemon, Trainer }= require('../models');
 const withAuth = require("../utils/auth");
 
 
 
-//-- GET req for all a trainers pokemons --//
+//-- GET req for all Pokemon belonging to a trainer --//
 router.get('/', withAuth, async (req, res) => {
     console.log('Pokemons GET route is working');
     try {
-        const trainerData = await Trainer.findOne( {where: { id: req.session.user_id },
+        const trainerData = await Trainer.findOne( {
+            attributes: { exclude: ['password'] },
+            where: { id: req.session.user_id },
             include: [
                 {
                     model: Pokemon,
@@ -16,14 +18,13 @@ router.get('/', withAuth, async (req, res) => {
             ]
         });
 
-        const trainer = trainerData.get({ plain: true });
+        const trainer = trainerData.get({ plain: true }); //-- trainer data to js --//
         
         const pokemonData = await Pokemon.findAll();
-        const pokedex = pokemonData.map((pokemon) => pokemon.get({ plain: true }));
+        const pokedex = pokemonData.map((pokemon) => pokemon.get({ plain: true })); //-- converts the pokemonData to a js object --//
 
-        // console.log(trainerData.pokemons)
-
-        // Assign is caught attribute to each pokemon that has been found by the trainer
+        
+        //-- Assign "is_ caught" attribute to each pokemon that has been found by the trainer --//
         pokedex.forEach(pokemon => {
              if (trainerData.pokemons.some(trainerPokemon => trainerPokemon.id === pokemon.id)) {
                 console.log(`found ${pokemon.id}`)
@@ -34,9 +35,9 @@ router.get('/', withAuth, async (req, res) => {
              }
             })
         
+        //-- Adding the caught Pokemon to the trainer's list of Pokemon --//
         trainer.pokedex = pokedex
-        // console.log(trainer)
-
+        
         res.render('trainer-pokedex', { 
             ...trainer,
             logged_in: req.session.logged_in,

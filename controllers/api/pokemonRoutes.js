@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const withAuth = require("../../utils/auth");
-const { Trainer, Pokemon, TrainerPokemon } = require("../../models");
+const { Pokemon } = require("../../models");
 
-// Get route for getting a single Pokemons data
+//-- GET route for getting a single Pokemons data --//
 router.get('/:id', withAuth, async (req, res) => {
     console.log('Pokemons GET route is working');
     try {

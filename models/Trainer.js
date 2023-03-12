@@ -2,17 +2,16 @@ const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
-// This is the Trainer a user creates
-// Belongs to many Pokemon through PokemonTrainer
+//-- This is the Trainer a user creates,
+//belongs to many Pokemon through PokemonTrainer --//
 
 class Trainer extends Model {
-  // Trainer Methods
-  checkPassword(loginPw) {
+    checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
-// initialise Trainer
+//-- Properties and Data Types --//
 Trainer.init(
   {
     id: {

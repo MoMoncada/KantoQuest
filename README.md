@@ -37,9 +37,9 @@ Mix and match to find the best combination to continue with your winning streak 
 > sequelize
 
 
-## Usage/ Deployed Application
+## Usage/ Deployed Application: [Gotta catch 'em all!]()
 
-[Gotta catch 'em all!]()
+
 
 ------
 
@@ -50,7 +50,7 @@ Mix and match to find the best combination to continue with your winning streak 
 
 
 ### Trainer's Dashboard
-![dashboard]()
+![dashboard](/public/assets/dashboard.png)
 
 
 ### Select the right type to defeat your opponent
