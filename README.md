@@ -37,7 +37,10 @@ Mix and match to find the best combination to continue with your winning streak 
 > sequelize
 
 
-## Usage/ Deployed Application: [Gotta catch 'em all!]()
+## Usage/ Deployed Application: 
+
+
+> Gotta catch 'em all!: https://stormy-wave-79983.herokuapp.com
 
 
 
