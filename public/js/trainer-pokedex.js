@@ -24,7 +24,7 @@ const delPokemonBtnHandler = async (event) => {
     if (response.ok) {
       document.location.reload();
     } else {
-      alert("Error removing from party: " + response);
+      alert("Error removing from your party.");
       button.disabled = false; // re-enable button if there's an error
     }
   }
@@ -103,7 +103,7 @@ const addPokemonBtnHandler = async (event) => {
       if (response.ok) {
         document.location.reload();
       } else {
-        alert("Error adding to party: " + response);
+        alert("Error adding to your party");
       }
     } else {
       alert("You already have 6 pokemon in your party!");
