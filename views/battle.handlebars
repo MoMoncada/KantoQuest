@@ -7,43 +7,6 @@
     min-height: 120vh;
 }
 
-h3 {
-    color:rgb(139, 19, 19);
-}
-
-.pokemon-card {
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 10px;
-    border: 1px rgb(78, 78, 78) solid;
-}
-
-.other-card {
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 10px;
-    margin-top: 20%;
-
-  }
-
-.other-card-party {
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 10px;
-    margin-top: 6%;
-
-}
-
-.evil-card {
-    background-color: rgba(253, 7, 7, 0.85);
-    border-radius: 10px;
-    margin-top: 20%;
-  }
-
-.dark-card {
-    background-color: rgba(0, 0, 0, 0.85);
-    padding: 0% 3% 3% 3%;
-    margin-bottom: 5%;
-    border-radius: 10px;
-  }
-
 .row .col.s3 {
     width: 30%;
     margin-left: 8px;
@@ -51,23 +14,7 @@ h3 {
     right: auto;
 }
 
-.custom-button-battle {
-    border-radius: 10px;
-}
-
-.btn {
-    text-decoration: none;
-    color: #fff;
-    background-color: rgb(139, 19, 19);
-    /* text-align: left; */
-    letter-spacing: .5px;
-    -webkit-transition: background-color .2s ease-out;
-    transition: background-color .2s ease-out;
-    margin: 5%;
-    cursor: pointer;
-}
 </style>
-
 
 {{!-- Battle section handlebars --}}
 <section class="row">
@@ -75,18 +22,18 @@ h3 {
         <div class="col s3 other-card-party center z-depth-5">
             <div class="">
                 <div class="col s12 center">
-                    <button id="battle" class="btn-large red white-text z-depth-5 waves-effect waves-light custom-button-battle"><i class="material-icons right">videogame_asset</i>FIGHT!</button>
+                    <button id="battle" class="btn-large white-text z-depth-5 waves-effect waves-light custom-button-battle"><i class="material-icons right">videogame_asset</i>FIGHT!</button>
                 </div>
-                <h3 class="card-title ">My Party</h3>
-                <p>Pick a Pokemon to Battle with</p>
-                <p>Then press FIGHT!</p>
+                <h3 class="card-title text-battle">My Party</h3>
+                <h5 class="text-battle">Pick a Pokemon to Battle with</h5>
+                <h5 class="text-battle">Then FIGHT!</h5>
             </div>
                 {{#each pokemons}}
                 {{#with this.trainer_pokemon}}
                 {{#with this.is_in_party}}
                 {{!-- BE CAREFUL WITH THE CSS --}}
                 {{!-- Battle.js relies on the ordering of the 'my-pokemon' and the 'battle-pokemon' classes --}}
-        <div class="pokemon-card col m6 s12  my-pokemon-div">
+        <div class="battle-pokemon-card col m6 s12  my-pokemon-div">
             <img class="my-pokemon " src="{{../../sprite}}" name="{{../../id}}">
             <h6 class="party-name pkn-type-black my-pokemon">{{capitalize ../../name}}</h6>
             {{#if ../../type_two}}  
@@ -99,13 +46,15 @@ h3 {
         {{/with}}
         {{/with}}
         {{/each}}
-        <a class="waves-effect waves-light btn col s12" href="/dashboard">Back to Dashboard!</a>
+        <div class="center col s12">
+            <a class="waves-effect waves-light btn return-btn" href="/dashboard"><i class="material-icons left">arrow_back</i>Back to Dashboard</a>
+        </div>
         </div>
             {{!-- Your battling Pokemon --}}
-        <div id="battle-pokemon-div" class="col s3 other-card center z-depth-5">
+        <div id="battle-pokemon-div" class="col s3 battle-other-card center z-depth-5">
             <h4>Battle Pokemon</h4>
-            <img id="battle-pokemon-img" class="pokemon-card battle-pokemon" width="150" height="150" src="assets/placeholder.png">
-            <div class="dark-card">
+            <img id="battle-pokemon-img" class="battle-pokemon-card battle-pokemon" width="150" height="150" src="assets/placeholder.png">
+            <div class="battle-dark-card">
                 <h3 id="battle-pokemon-name" class="white-text battle-pokemon "></h3>
                 <p id="battle-pokemon-type-one" class="center battle-pokemon pkn-type-empty empty"></p>
                 <p id="battle-pokemon-type-two" class="center battle-pokemon pkn-type-empty empty"></p>
@@ -114,10 +63,10 @@ h3 {
 
         {{!-- Wild Pokemon data --}}
         {{#if random_wild_pokemon}}
-        <div id="wild-pokemon" class="col s3 evil-card center z-depth-5 wild-pokemon" data-id="{{random_wild_pokemon.id}}">
+        <div id="wild-pokemon" class="col s3 battle-wild-card center z-depth-5 wild-pokemon" data-id="{{random_wild_pokemon.id}}">
             <h4>Wild Pokemon</h4>
-            <img class="pokemon-card" width="150" height="150" src="{{random_wild_pokemon.sprite}}">
-            <div class="dark-card">
+            <img class="battle-pokemon-card" width="150" height="150" src="{{random_wild_pokemon.sprite}}">
+            <div class="battle-dark-card">
                 <h3 class="white-text">{{capitalize random_wild_pokemon.name}}</h3>
                 {{#if random_wild_pokemon.type_two}}
                 <p class="center pkn-type {{random_wild_pokemon.type_one}}"></p>

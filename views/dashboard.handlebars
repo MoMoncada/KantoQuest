@@ -6,140 +6,93 @@
     width: 100%;
     min-height: 100vh;
   }
-
-  .card {
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 10px;
-    border-bottom: 3px rgb(139, 19, 19) solid;
-    }
-  .card-title a {
-    font-size: 50px;
-    font-weight: bold;
-    }
-
-  .card .card-title {
-    font-size: 35px;
-    font-weight: 600;
-    }
-  
-  .card-content {
-    padding: 20px;
-    }
-
-  .card-title {
-    color: #8b1313;
-    text-align: center;
-    margin-top: 0;
-    padding-top: 10px;
-  }
-
-  .card .card-image img {
-    height: auto; 
-    width: 100%;
-    position: relative;
-    top: 10px;
-  }
-
-  .row .col.m6 {
-    margin-top: 4%;
-    width: 50%;
-    margin-left: 235px;
-    left: auto;
-    right: auto;
-  }
 </style>
-
 
 {{!-- Trainer's main dashboard --}}
 <section class="background-img-dashboard">
   <div class="container row">
-    <div class= "row center">
-      {{#if pokemons.length}}
-      <div class="col s12 m6">
-        <div class="card">
-          <h3 class="card-title">{{username}}'s Party</h3>
-          <hr class="hr">
-          <div class="card-content">
-            <p class="p-dashboard"><a class= "edit-a" href="/trainersPokedex">My Pokedex / Edit Party</a></p>
-            <div class="row col s12">
-              {{#each pokemons}}
-              {{#with this.trainer_pokemon}}
-              {{#with this.is_in_party}}
-              <div class="col s4">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="{{../../sprite}}">
-                  </div>
-                </div>
-              </div>
-              {{/with}}
-              {{/with}}
-              {{/each}}
-            </div>
-            <div>
-              <p class="p-dashboard">Your highest score is: {{total_score}} points</p>
+    {{#if pokemons.length}}
+    <div class= "col s12 custom-party-card">
+      <div class="dash-card-padding">
+        <h3 class="dash-card-title">{{username}}'s Party</h3>
+        <p class="p-score">Your current score is: <span class="p-points">{{total_score}} points!</span></p>
+        <hr class="hr">
+      </div>
+      <div class="dash-card-padding">
+        <div>
+          <p class="p-dashboard"><a class= "edit-a pkn-type-white" href="/trainersPokedex">My Pokedex / Edit Party</a></p>
+        </div>
+        <div class="col s12">
+          <div class="dash-card-padding center">
+            <button class="waves-effect waves-light btn-large custom-dash-battle"><i class="material-icons right">gamepad</i><a class="white-text" href="/battle">Battle a wild Pokemon</a></button>
+          </div>
+        </div>
+        <div class="row col s12">
+          {{#each pokemons}}
+          {{#with this.trainer_pokemon}}
+          {{#with this.is_in_party}}
+          <div class="col s4">
+            <div class="center">
+              <img class="dash-card-img " src="{{../../sprite}}">
+              <P class="p-dashboard pkn-type-white">{{capitalize ../../name}}</P>
             </div>
           </div>
-          {{else}}
-          <div class="card-content">
-              <div class="row col s12">
-                <div class="card">
-                  <h2 class="center title red-text">{{username}}!</h2>
-                  <h2 class="center title">Select your starter to begin your adventure</h2>
-                </div>
-                <div>
-                  <div class="card col s3 offset-s1">
-                    <div class="card-image">
-                      <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
-                    </div>
-                    <div>
-                      <p class="p-dashboard">Bulbasaur</p>
-                      <p class="pkn-type grass"></p>
-                      <p class="pkn-type poison"></p>
-                    </div>
-                    <div class="center dashboard-bot-padding">
-                      <button class="waves-effect waves-light btn-small green starter-pokemon" data-id="{{id}}" data-pokemon-id="1">Pick this pokemon?</button>
-                    </div>
-                  </div>
-                  <div class="card col s3 offset-s1 ">
-                    <div class="card-image">
-                      <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png">
-                    </div>
-                    <div>
-                      <p class="p-dashboard">Charmander</p>
-                      <p class="pkn-type fire"></p>
-                      <p class="pkn-type-empty empty"></p>
-                    </div>
-                    <div class="center dashboard-bot-padding">
-                      <button class="waves-effect waves-light btn-small orange starter-pokemon"data-id="{{id}}" data-pokemon-id="4">Pick this pokemon?</button>
-                    </div>
-                  </div>
-                  <div class="card col s3 offset-s1" >
-                    <div class="card-image">
-                      <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png">
-                    </div>
-                    <div>
-                      <p class="p-dashboard">Squirtle</p>
-                      <p class="pkn-type water"></p><p class="pkn-type-empty empty"></p>
-                    </div>
-                    <div class="center dashboard-bot-padding">
-                      <button class="waves-effect waves-light btn-small blue starter-pokemon" data-id="{{id}}" data-pokemon-id="7">Pick this pokemon?</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          {{/with}}
+          {{/with}}
+          {{/each}}
+        </div>
+      </div>
+      {{else}}
+      <div class="dash-card-padding">
+        <div class="row col s12">
+          <div class="custom-party-card">
+            <h2 class="center title red-text">{{username}}!</h2>
+            <h2 class="center title">Select your starter to begin your adventure</h2>
           </div>
-          {{/if}}
+          <div>
+            <div class="custom-party-card card col s3 offset-s1">
+              <div class="card-image">
+                <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
+              </div>
+              <div>
+                <p class="p-dashboard">Bulbasaur</p>
+                <p class="pkn-type grass center"></p>
+                <p class="pkn-type poison center"></p>
+              </div>
+              <div class="center dashboard-bot-padding">
+                <button class="waves-effect waves-light btn-small green starter-pokemon" data-id="{{id}}" data-pokemon-id="1">Pick this pokemon?</button>
+              </div>
+            </div>
+            <div class="custom-party-card card col s3 offset-s1">
+              <div class="card-image">
+                <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png">
+              </div>
+              <div>
+                <p class="p-dashboard">Charmander</p>
+                <p class="pkn-type fire center"></p>
+                <p class="pkn-type-empty empty"></p>
+              </div>
+              <div class="center dashboard-bot-padding">
+                <button class="waves-effect waves-light btn-small orange starter-pokemon"data-id="{{id}}" data-pokemon-id="4">Pick this pokemon?</button>
+              </div>
+            </div>
+            <div class="custom-party-card card col s3 offset-s1" >
+              <div class="card-image">
+                <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png">
+              </div>
+              <div>
+                <p class="p-dashboard">Squirtle</p>
+                <p class="pkn-type water center"></p><p class="pkn-type-empty empty"></p>
+              </div>
+              <div class="center dashboard-bot-padding">
+                <button class="waves-effect waves-light btn-small blue starter-pokemon" data-id="{{id}}" data-pokemon-id="7">Pick this pokemon?</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      {{#if pokemons.length}}
-      <div class="col s12">
-        <div class="card-content">
-          <button class="waves-effect waves-light btn-large red"><i class="material-icons right">gamepad</i><a class="white-text" href="/battle">Battle a wild Pokemon</a></button>
-        </div>
-      </div>
-      {{/if}}
     </div>
+    {{/if}}
   </div>
 </section>
 
