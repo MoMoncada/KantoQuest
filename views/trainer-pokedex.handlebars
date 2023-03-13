@@ -6,17 +6,15 @@
 }
 </style>
 
-
 {{!-- Trainer's Pokedex handlebars --}}
 {{!-- Center of Page --}}
 <section class="background background-img-trainerpokedex">
     <section class="container row col s6 trainerpokedex-container">
-        <section class="col s3">
-            <h3 class="center white-text">Your Party</h3> 
+        <div class="col s3">
+            <div class="col s9">
+                <h3 class="center white-text">Your Party</h3>
+            </div>
             <div class="row " id="party-box">
-                {{!-- Shows the path to get the is_in_party value don't remove yet useful with testing--}}
-                {{!-- {{log pokemons.[5].trainer_pokemon.is_in_party }} --}}
-                {{!-- {{log pokemons.[0]}} --}}
                 {{#each pokemons}}
                 {{#with this.trainer_pokemon}}
                 {{#with this.is_in_party}}
@@ -31,11 +29,11 @@
                 {{/with}}
                 {{/each}}
             </div>
-            <div class="center party-nav">
-            <a class="custom-button-trainerpokedex waves-effect waves-light btn" href="/dashboard">Go back!</a>
-            <a class="custom-button-trainerpokedex waves-effect waves-light btn" href="/battle"><i class="material-icons right">gamepad</i>Battle</a>
+            <div class="center">
+                <a class="waves-effect waves-light btn custom-dash-battle" href="/battle"><i class="material-icons right">gamepad</i>Battle</a>
+            <a class="waves-effect waves-light btn return-btn" href="/dashboard">Go back!</a>
             </div>
-        </section>
+        </div>
         <div class="col s9" id="pokedex">
             {{!-- Search Bar --}}
             <div class="row">
