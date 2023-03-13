@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       // If successful go to profile page
       document.location.replace("/dashboard");
     } else {
-      alert(response.statusText);
+      alert("Please enter a valid email address or password");
     }
   }
 };
@@ -41,7 +41,7 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
-      alert(response.statusText);
+      alert("Please enter valid sign up data!\nYour password must be 8 characters long\nMust enter a valid email address");
     }
   }
 };

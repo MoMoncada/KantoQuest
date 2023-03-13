@@ -15,7 +15,7 @@ const starterPokemonHandler = async (event) => {
       alert("Error adding to pokedex: " + response);
     }
   } else {
-    alert("Error" + response);
+    alert("Error adding your starter pokemon");
   }
 };
 

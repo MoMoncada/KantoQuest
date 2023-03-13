@@ -61,7 +61,7 @@ const battle = async () => {
     if (response.ok) {
       var battlePokemon = await response.json();
     } else {
-      alert(response.statusText);
+      alert("Please select a Pokemon to battle!");
       return;
     }
     //-- Retrieving the data of the wild pokemon --//
