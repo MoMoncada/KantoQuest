@@ -1,5 +1,5 @@
 const { Pokemon } = require("../models");
-const Pokedex = require("Pokedex-promise-v2");
+const Pokedex = require("pokedex-promise-v2");
 const P = new Pokedex();
 
 async function seedPokemon() {
