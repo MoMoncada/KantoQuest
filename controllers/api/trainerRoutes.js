@@ -49,6 +49,7 @@ router.post('/login', async (req, res) => {
   try {
     const dbTrainerData = await Trainer.findOne({ where: { email: req.body.email } });
     if (!dbTrainerData) {
+      console.log('error')
       res.status(400).json({ message: 'Incorrect email or password' });
       return;
     }

@@ -1,3 +1,5 @@
+const error = document.getElementById('error')
+
 //-- Retrieves the user's info  and if it's 200ok it takes the user to the dashboard --//
 const loginFormHandler = async (event) => {
   event.preventDefault();
@@ -17,7 +19,8 @@ const loginFormHandler = async (event) => {
       // If successful go to profile page
       document.location.replace("/dashboard");
     } else {
-      alert(response.statusText);
+      error.style.opacity="100%";
+      // alert('response.statusText');
     }
   }
 };
